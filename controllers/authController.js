@@ -1,11 +1,11 @@
-module.exports = function (db) {
+module.exports = (db) => {
   return {
-    register: function (req, res) {
+    register: (req, res) => {
       if (!req.body.email || !req.body.password) {
         return res.json({ message: 'Email and Password required!'});
       }
 
-      db.User.sync().then(function () {
+      db.User.sync().then(() => {
         const newUser = {
           email: req.body.email,
           password: req.body.password,
@@ -13,24 +13,24 @@ module.exports = function (db) {
           lastName: req.body.lastName
         };
 
-        return db.User.create(newUser).then(function () {
+        return db.User.create(newUser).then(() => {
           res.status(200).json({ message: 'Registered successfully.' });
         });
-      }).catch(function (err) {
+      }).catch((err) => {
         console.log(err);
         res.status(403).json({ error: 'Email already exists!' });
       });
     },
-    login: function (req, res) {
+    login: (req, res) => {
       if (req.user) {
-        return res.json(true);
+        return res.status(200).json(true);
       } else {
         res.status(401).json({ error: 'Can not log in, check your user name and password!' });
       }
     },
-    logout: function (req, res, next) {
+    logout: (req, res, next) => {
       req.logout();
-      req.session.destroy(function (err) {
+      req.session.destroy((err) => {
         if (err) {
           return next(err);
         }
@@ -38,8 +38,8 @@ module.exports = function (db) {
         res.redirect('/');
       });
     },
-    updateUser: function (req, res) {
-      console.log('req.body:', req.body);
+    updateUser: (req, res) => {
+      // console.log('req.body:', req.body);
       db.User.update({
         email: req.body.email,
         firstName: req.body.firstName,
@@ -48,19 +48,30 @@ module.exports = function (db) {
       }, {
         where: { id: req.params.id }
       }).then(result => {
-        console.log(result);
+        // console.log(result);
         res.json(result);
       });
     },
-    confirmAuth: function (req, res) {
-      if (req.user) {
+    confirmAuth: (req, res) => {
+      const email = req.body.email;
+      const pwd = req.body.password;
+
+      db.User.findOne({
+        where: { email: email }
+      }).then((user) => {
+        if(!user) {
+          return res.json(false);
+        }
+        if(!user.validPassword(pwd)) {
+          return res.json(false);
+        }
         return res.json(true);
-      } else {
-        return res.json(false);
-      }
+      });
     },
-    deleteUser: function(req, res) {
-      db.User.destroy({ where: { id: req.params.id } }).then(() => {
+    deleteUser: (req, res) => {
+      db.User.destroy({
+        where: { id: req.params.id } 
+      }).then(() => {
         res.json(true);
       }).catch(() => {
         res.json(false);

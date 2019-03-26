@@ -8,6 +8,7 @@ const moment = require('moment');
 const helmet = require('helmet');
 const PORT = process.argv[2] || process.env.PORT || 3333;
 const app = express();
+const db = require('./models');
 
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
@@ -16,8 +17,6 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(morgan('dev')); // Hook up the HTTP logger
 app.use(express.static('public'));
-
-const db = require('./models');
 
 require('./config/passport')(db, app, passport); // pass passport for configuration
 
@@ -32,28 +31,18 @@ app.use(helmet.hsts({
 
 // catch 404 and forward to error handler
 if (app.get('env') !== 'development') {
-  app.use(function (req, res, next) {
+  app.use((req, res, next) => {
     let err = new Error('Not Found: ' + req.url);
     err.status = 404;
     next(err);
   });
 }
 
-db.sequelize.sync({force: true}).then(() => {
-  db.User.create({
-    firstName: 'Joe',
-    lastName: 'Gates',
-    email: 'j@g.co',
-    password: process.env.ADMIN_USER_PWD,
-    isAdmin: true
-  });
-  db.User.create({
-    firstName: 'Jane',
-    lastName: 'Jobs',
-    email: 'j@j.co',
-    password: process.env.USER_PWD,
-    isAdmin: false
-  });
+db.sequelize.sync({ force: process.env.FORCE_SYNC === 'true' }).then(() => {
+  if(process.env.FORCE_SYNC === 'true') {
+    require('./db/seed')(db);
+  }
+
   app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
   });  

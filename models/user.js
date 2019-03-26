@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
     hooks: {
       beforeValidate: function(user) {
         if(user.changed('password')) {
-          return bcrypt.hash(user.password, 10).then(function(password) {
+          return bcrypt.hash(user.password, 10).then((password) => {
             user.password = password;
           });
         }
@@ -44,13 +44,12 @@ module.exports = function(sequelize, DataTypes) {
 
   // This will check if an unhashed password can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
-    console.log('bcrypt', bcrypt.compareSync(password, this.password));
     return bcrypt.compareSync(password, this.password);
   };
 
   // Compares passwords
   User.prototype.comparePasswords = function(password, callback) {
-    bcrypt.compare(password, this.password, function(error, isMatch) {
+    bcrypt.compare(password, this.password, (error, isMatch) => {
       if(error) {
         return callback(error);
       }

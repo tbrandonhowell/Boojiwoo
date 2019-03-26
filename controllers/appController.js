@@ -1,6 +1,6 @@
 module.exports = function () {
   return {
-    getData: function (req, res) {
+    getData: (req, res) => {
       res.json({
         data: {
           name: 'sample',

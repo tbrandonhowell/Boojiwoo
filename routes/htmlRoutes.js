@@ -1,27 +1,27 @@
 const router = require('express').Router();
 
-module.exports = function(db) {
-  router.get('/register', function (req, res) {
+module.exports = (db) => {
+  router.get('/register', (req, res) => {
     if (req.isAuthenticated()) {
-      res.redirect('/userview');
+      res.redirect('/profile');
     } else {
       res.render('register'); 
     }
   });
 
-  router.get('/userview', function (req, res) {
+  router.get('/profile', (req, res) => {
     if(req.isAuthenticated()) {
       db.User.findOne({
         where:{
           id: req.session.passport.user.id
         }
-      }).then(function() {
+      }).then(() => {
         const user = {
           userInfo: req.session.passport.user,
           isloggedin: req.isAuthenticated()
         };
-        console.log(user);
-        res.render('userview', user);
+        // console.log(user);
+        res.render('profile', user);
       });
     }
     else {
@@ -29,7 +29,7 @@ module.exports = function(db) {
     }
   });
 
-  router.get('/', function(req, res) {
+  router.get('/', (req, res) => {
     if(req.isAuthenticated()) {
       const user = {
         user: req.session.passport.user,
@@ -42,7 +42,7 @@ module.exports = function(db) {
     }
   });
 
-  router.get('/dashboard', function(req, res) {
+  router.get('/dashboard', (req, res) => {
     if(req.isAuthenticated()) {
       const user = {
         user: req.session.passport.user,
@@ -55,9 +55,9 @@ module.exports = function(db) {
     }
   });
 
-  router.get('/logout', function(req, res, next) {
+  router.get('/logout', (req, res, next) => {
     req.logout();
-    req.session.destroy(function (err) {
+    req.session.destroy((err) => {
       if (err) {
         return next(err);
       }

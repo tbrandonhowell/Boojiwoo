@@ -1,4 +1,4 @@
-$('#add-user').on('click', function (event) {
+$('#add-user').on('click', function(event) {
   event.preventDefault();
 
   const newAccount = {
@@ -10,10 +10,10 @@ $('#add-user').on('click', function (event) {
 
   if (newAccount.password.length > 0 && newAccount.email.length > 0 && newAccount.password.length > 0 && newAccount.lastName.length > 0 && newAccount.firstName.length > 0) {
     $.ajax({
-      type: 'post',
+      type: 'POST',
       url: '/api/register',
       data: newAccount
-    }).then(function () {
+    }).then(() => {
       window.location.href = '/';
     });
   } else {
@@ -22,7 +22,7 @@ $('#add-user').on('click', function (event) {
   }
 });
 
-$('#update-user').on('click', function (event) {
+$('#update-user').on('click', function(event) {
   event.preventDefault();
 
   const id = $(this).data('id');
@@ -43,7 +43,7 @@ $('#update-user').on('click', function (event) {
       type: 'PUT',
       url: `/api/user/${id}`,
       data: changeUser
-    }).then(function (result) {
+    }).then((result) => {
       console.log('Updated user:', result);
       // Reload the page to get the updated list
       window.location.href = '/logout';
@@ -56,28 +56,32 @@ $('#update-user').on('click', function (event) {
 });
 
 // DELETE   ***************************************************
-$('#delete-user').on('click', function (event) {
+$('#delete-user').on('click', function(event) {
   event.preventDefault();
   $('#err-msg').empty('');
   $('#delete-user-modal').modal('show');
 });
 
-$('#confirm-delete').on('click', function (event) {
+$('#confirm-delete').on('click', function(event) {
   event.preventDefault();
 
   const id = $(this).data('id');
 
   const deleteUser = {
-    userEmail: $('#userEmail').val().trim(),
-    userPassword: $('#userPassword').val().trim(),
+    email: $('#userEmail').val().trim(),
+    password: $('#userPassword').val().trim(),
   };
 
-  if (deleteUser.userEmail.length > 0 && deleteUser.userPassword.length > 0) {
-    $.post('/api/user/confirm', { email: userEmail, password: userPassword }).then(result => {
+  if (deleteUser.email.length > 0 && deleteUser.password.length > 0) {
+    $.ajax({
+      type: 'POST',
+      url: '/api/user/confirm',
+      data: deleteUser
+    }).then((result) => {
       if(result) {
-        $.ajax('/api/user/:id', {
+        $.ajax(`/api/user/${id}`, {
           type: 'DELETE'
-        }).then(function () {
+        }).then(() => {
           console.log('Deleted user', deleteUser);
           // Reload the page to get the updated list
           window.location.href = '/logout';
@@ -92,22 +96,22 @@ $('#confirm-delete').on('click', function (event) {
   }
 });
 
-$('#register').on('click', function (event) {
+$('#register').on('click', function(event) {
   event.preventDefault();
   window.location.href = '/register';
 });
 
-$('#login-modal').on('click', function (event) {
+$('#login-modal').on('click', function(event) {
   event.preventDefault();
   $('#user-info').modal('show');
 });
 
-$('#go-home').on('click', function (event) {
+$('#go-home').on('click', function(event) {
   event.preventDefault();
   window.location.href = '/';
 });
 
-$('#login').on('click', function (event) {
+$('#login').on('click', function(event) {
   event.preventDefault();
 
   const user = {
@@ -115,13 +119,13 @@ $('#login').on('click', function (event) {
     password: $('#user_password').val().trim()
   };
   
-  $.post('/api/login', user, function(result){
+  $.post('/api/login', user, (result) => {
+    console.log(result);
     if(result) {
-      $(location).attr('href', '/dashboard');
+      // $(location).attr('href', '/dashboard');
     } else {
       $('#user-info').modal('close');
       alert('oops something went wrong, please try again!');
     }
   });
 });
-
