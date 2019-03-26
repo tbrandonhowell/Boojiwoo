@@ -18,7 +18,7 @@ app.set('view engine', 'handlebars');
 app.use(morgan('dev')); // Hook up the HTTP logger
 app.use(express.static('public'));
 
-require('./config/passport')(db, app, passport); // pass passport for configuration
+require("./config/passport")(db, app, passport); // pass passport for configuration
 
 // Define our routes
 app.use(require('./routes/htmlRoutes')(db));
