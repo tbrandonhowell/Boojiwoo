@@ -5,14 +5,14 @@ module.exports = (db) => {
     if (req.isAuthenticated()) {
       res.redirect('/profile');
     } else {
-      res.render('register'); 
+      res.render('register');
     }
   });
 
   router.get('/profile', (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       db.User.findOne({
-        where:{
+        where: {
           id: req.session.passport.user.id
         }
       }).then(() => {
@@ -23,34 +23,31 @@ module.exports = (db) => {
         // console.log(user);
         res.render('profile', user);
       });
-    }
-    else {
+    } else {
       res.redirect('/');
     }
   });
 
   router.get('/', (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       const user = {
         user: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
       res.render('dashboard', user);
-    }
-    else {
+    } else {
       res.render('dashboard');
     }
   });
 
   router.get('/dashboard', (req, res) => {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       const user = {
         user: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
       res.render('dashboard', user);
-    }
-    else {
+    } else {
       res.render('dashboard');
     }
   });
