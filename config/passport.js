@@ -13,6 +13,9 @@ module.exports = (db, app, passport) => {
       table: 'Session',
       extendDefaultFields: (defaults, session) => {
         const userId = session && session.passport && session.passport.user && session.passport.user.id;
+        // console.log('-------------------------------------------------------');
+        // console.log('userId:', userId);
+        // console.log('-------------------------------------------------------');
         if (userId) {
           return {
             data: defaults.data,
@@ -27,7 +30,10 @@ module.exports = (db, app, passport) => {
         }
       }
     }),
-    resave: false, saveUninitialized: false, unset: 'destroy', proxy: true,
+    resave: false,
+    saveUninitialized: false,
+    unset: 'destroy',
+    proxy: true,
     cookie: {
       maxAge: moment.duration(5, 'days').asMilliseconds(),
       secure: process.env.APP_SSL === 'true'
