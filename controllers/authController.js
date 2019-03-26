@@ -2,7 +2,7 @@ module.exports = (passport, db) => {
   return {
     register: (req, res) => {
       if (!req.body.email || !req.body.password) {
-        return res.json({ message: 'Email and Password required!'});
+        return res.json({ message: 'Email and Password required!' });
       }
 
       db.User.sync().then(() => {
@@ -23,13 +23,13 @@ module.exports = (passport, db) => {
     },
     login: (req, res, next) => {
       passport.authenticate('local', (err, user) => {
-        if(err) {
+        if (err) {
           return next(err);
         }
-        if(user) {
+        if (user) {
           req.logIn(user, (err) => {
-            if (err) { 
-              return next(err); 
+            if (err) {
+              return next(err);
             }
             return res.status(200).json({ loggedIn: true });
           });
@@ -69,10 +69,10 @@ module.exports = (passport, db) => {
       db.User.findOne({
         where: { email: email }
       }).then((user) => {
-        if(!user) {
+        if (!user) {
           return res.json(false);
         }
-        if(!user.validPassword(pwd)) {
+        if (!user.validPassword(pwd)) {
           return res.json(false);
         }
         return res.json(true);
@@ -80,7 +80,7 @@ module.exports = (passport, db) => {
     },
     deleteUser: (req, res) => {
       db.User.destroy({
-        where: { id: req.params.id } 
+        where: { id: req.params.id }
       }).then(() => {
         res.json(true);
       }).catch(() => {

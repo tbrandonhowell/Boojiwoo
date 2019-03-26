@@ -51,12 +51,9 @@ module.exports = (db, app, passport) => {
     db.User.findOne({ where: { email: email } }).then((user) => {
       // If there's no user with the given email
       if (!user) {
-        return done(null, false, {
-          error: 'No user found.'
-        });
-      }
-      // If there is a user with the given email, but the password the user gives us is incorrect
-      else if (!user.validPassword(password)) {
+        return done(null, false, { error: 'No user found.' });
+      } else if (!user.validPassword(password)) {
+        // If there is a user with the given email, but the password the user gives us is incorrect
         // console.log('pwd correct:', user);
         return done(null, false, {
           error: 'Oops! Wrong password.!'
