@@ -3,7 +3,7 @@ const ensureAuthenticated = require('../middlewares/ensureAuthenticated');
 
 module.exports = function(passport, db) {
   const AuthController = require('../controllers/authController')(db);
-  const AppController = require('../controllers/appController')(db);
+  const AppController = require('../controllers/appController')();
 
   // Authentication
   router.post('/register', AuthController.register);

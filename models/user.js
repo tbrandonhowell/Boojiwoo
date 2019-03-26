@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const env = process.env.NODE_ENV || 'local';
 
 module.exports = function(sequelize, DataTypes) {
   let User = sequelize.define('User', {
@@ -59,7 +58,7 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
 
-  User.prototype.toJSON =  function() {
+  User.prototype.toJSON = function() {
     const values = Object.assign({}, this.get());
     delete values.password;
     return values;

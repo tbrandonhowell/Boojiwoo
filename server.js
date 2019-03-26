@@ -19,7 +19,7 @@ app.use(express.static('public'));
 
 const db = require('./models');
 
-require('./config/passport')(db, app, passport);  // pass passport for configuration
+require('./config/passport')(db, app, passport); // pass passport for configuration
 
 // Define our routes
 app.use(require('./routes/htmlRoutes')(db));
@@ -34,7 +34,7 @@ app.use(helmet.hsts({
 if (app.get('env') !== 'development') {
   app.use(function (req, res, next) {
     let err = new Error('Not Found: ' + req.url);
-    err['status'] = 404;
+    err.status = 404;
     next(err);
   });
 }

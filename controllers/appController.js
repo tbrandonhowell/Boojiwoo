@@ -1,4 +1,4 @@
-module.exports = function (db) {
+module.exports = function () {
   return {
     getData: function (req, res) {
       res.json({
@@ -8,5 +8,5 @@ module.exports = function (db) {
         }
       });
     }
-  }
+  };
 };

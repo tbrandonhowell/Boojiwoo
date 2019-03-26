@@ -1,51 +1,40 @@
 const router = require('express').Router();
-const ensureAuthenticated = require('../middlewares/ensureAuthenticated');
 
 module.exports = function(db) {
   router.get('/register', function (req, res) {
     if (req.isAuthenticated()) {
-      res.redirect("/userview");
+      res.redirect('/userview');
     } else {
-      res.render("register"); 
+      res.render('register'); 
     }
   });
 
-  router.get("/userview", function (req, res) {
+  router.get('/userview', function (req, res) {
     if(req.isAuthenticated()) {
-       // const user = {
-       //    id: req.session.passport.user,
-       //    isloggedin: req.isAuthenticated()
-       //  }
-
       db.User.findOne({
         where:{
           id: req.session.passport.user.id
         }
-      }).then(function(dbUser) {
+      }).then(function() {
         const user = {
           userInfo: req.session.passport.user,
           isloggedin: req.isAuthenticated()
-        }
+        };
         console.log(user);
-        res.render("userview", user);
+        res.render('userview', user);
       });
     }
     else {
-      const user = {
-          id: null,
-          isloggedin: req.isAuthenticated()
-        }
-      res.redirect("/");
+      res.redirect('/');
     }
   });
 
-  router.get("/", function(req, res) {
-    debugger;
+  router.get('/', function(req, res) {
     if(req.isAuthenticated()) {
       const user = {
         user: req.session.passport.user,
         isloggedin: req.isAuthenticated()
-      }
+      };
       res.render('dashboard', user);
     }
     else {
@@ -53,13 +42,12 @@ module.exports = function(db) {
     }
   });
 
-  router.get("/dashboard", function(req, res) {
-    debugger;
+  router.get('/dashboard', function(req, res) {
     if(req.isAuthenticated()) {
       const user = {
         user: req.session.passport.user,
         isloggedin: req.isAuthenticated()
-      }
+      };
       res.render('dashboard', user);
     }
     else {
