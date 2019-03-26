@@ -1,4 +1,4 @@
-$('#add-account').on('click', function (event) {
+$('#add-user').on('click', function (event) {
   event.preventDefault();
 
   const newAccount = {
@@ -22,7 +22,7 @@ $('#add-account').on('click', function (event) {
   }
 });
 
-$('#update-account').on('click', function (event) {
+$('#update-user').on('click', function (event) {
   event.preventDefault();
 
   const id = $(this).data('id');
@@ -35,7 +35,7 @@ $('#update-account').on('click', function (event) {
     password: $('#inputPassword').val().trim()
   };
   $('#err-msg').empty('');
-  // $('#change-account-modal').modal('show');
+  // $('#change-user-modal').modal('show');
   console.log(changeUser);
 
   if (changeUser.password.length > 0 && changeUser.email.length > 0 && changeUser.password.length > 0 && changeUser.lastName.length > 0 && changeUser.firstName.length > 0) {
@@ -56,10 +56,10 @@ $('#update-account').on('click', function (event) {
 });
 
 // DELETE   ***************************************************
-$('#delete-account').on('click', function (event) {
+$('#delete-user').on('click', function (event) {
   event.preventDefault();
   $('#err-msg').empty('');
-  $('#delete-account-modal').modal('show');
+  $('#delete-user-modal').modal('show');
 });
 
 $('#confirm-delete').on('click', function (event) {
@@ -78,7 +78,7 @@ $('#confirm-delete').on('click', function (event) {
         $.ajax('/api/user/:id', {
           type: 'DELETE'
         }).then(function () {
-          console.log('Deleted account', deleteUser);
+          console.log('Deleted user', deleteUser);
           // Reload the page to get the updated list
           window.location.href = '/logout';
         });
@@ -99,7 +99,7 @@ $('#register').on('click', function (event) {
 
 $('#login-modal').on('click', function (event) {
   event.preventDefault();
-  $('#account-info').modal('show');
+  $('#user-info').modal('show');
 });
 
 $('#go-home').on('click', function (event) {
@@ -112,14 +112,14 @@ $('#login').on('click', function (event) {
 
   const user = {
     email: $('#email').val().trim(),
-    password: $('#account_password').val().trim()
+    password: $('#user_password').val().trim()
   };
   
   $.post('/api/login', user, function(result){
     if(result) {
       $(location).attr('href', '/dashboard');
     } else {
-      $('#account-info').modal('close');
+      $('#user-info').modal('close');
       alert('oops something went wrong, please try again!');
     }
   });

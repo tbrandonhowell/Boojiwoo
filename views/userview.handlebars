@@ -1,16 +1,16 @@
-{{> nav/nav-block account=true register=false}}
+{{> nav/nav-block user=true register=false}}
 
 <div class="container">
   <header align="center" class="header-wrap">
-    <h1>View or update your account</h1>
-    <div class="accountID">
+    <h1>View or update your user</h1>
+    <div class="userID">
       <h3>Welcome, {{userInfo.firstName}}</h3>
-      <h5 id="account-number" data-accountemail="{{userInfo.email}}">Account email: {{userInfo.email}}</h5>
+      <h5 id="user-number" data-useremail="{{userInfo.email}}">Account email: {{userInfo.email}}</h5>
     </div>
     <h3 id="update-err-msg"></h3>
   </header>
 
-  <form id="account-form">
+  <form id="user-form">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputFirst">First Name</label>
@@ -34,15 +34,15 @@
     </div>
 
     <div>
-      <button type="submit" id="update-account" data-id="{{userInfo.id}}" class="btn btn-primary">Update</button>
+      <button type="submit" id="update-user" data-id="{{userInfo.id}}" class="btn btn-primary">Update</button>
       {{#unless userInfo.isAdmin}}
-        <button type="submit" id="delete-account" data-id="{{userInfo.id}}" class="btn btn-primary">Delete</button>
+        <button type="submit" id="delete-user" data-id="{{userInfo.id}}" class="btn btn-primary">Delete</button>
       {{/unless}}
-      <button type="submit" id="view-account" data-id="{{userInfo.id}}" class="btn btn-primary">Refresh</button>
+      <button type="submit" id="view-user" data-id="{{userInfo.id}}" class="btn btn-primary">Refresh</button>
     </div>
   </form>
 
-  <div class="modal" id="delete-account-modal" tabindex="-1" role="dialog">
+  <div class="modal" id="delete-user-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

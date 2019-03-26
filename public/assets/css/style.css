@@ -53,7 +53,7 @@ body {
     font-size: 22px;
 }
 
-#account-form, .header-wrap, #create-form, .create-acct-wrap {
+#user-form, .header-wrap, #create-form, .create-acct-wrap {
   padding: 20px;
   border-radius: 15px;
   margin: 20px 0;
@@ -102,7 +102,7 @@ body {
 [data-post="true"] {
   color: white !important;
 }
-[data-account="true"] {
+[data-user="true"] {
   color: white !important;
 }
 [data-register="true"] {
@@ -114,7 +114,7 @@ body {
   font-weight: 500;
 }
 
-.accountID h2, .header-wrap h1 {
+.userID h2, .header-wrap h1 {
   text-transform: capitalize;
 }
 
