@@ -47,6 +47,13 @@ db.sequelize.sync({force: true}).then(() => {
     password: process.env.ADMIN_USER_PWD,
     isAdmin: true
   });
+  db.User.create({
+    firstName: 'Jane',
+    lastName: 'Jobs',
+    email: 'j@j.co',
+    password: process.env.USER_PWD,
+    isAdmin: false
+  });
   app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
   });  

@@ -37,6 +37,34 @@ module.exports = function (db) {
         res.clearCookie('connect.sid', { path: '/' });
         res.redirect('/');
       });
+    },
+    updateUser: function (req, res) {
+      console.log('req.body:', req.body);
+      db.User.update({
+        email: req.body.email,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        password: req.body.password
+      }, {
+        where: { id: req.params.id }
+      }).then(result => {
+        console.log(result);
+        res.json(result);
+      });
+    },
+    confirmAuth: function (req, res) {
+      if (req.user) {
+        return res.json(true);
+      } else {
+        return res.json(false);
+      }
+    },
+    deleteUser: function(req, res) {
+      db.User.destroy({ where: { id: req.params.id } }).then(() => {
+        res.json(true);
+      }).catch(() => {
+        res.json(false);
+      });
     }
   };
 };
