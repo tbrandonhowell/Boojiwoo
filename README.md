@@ -7,8 +7,9 @@ A simple starter project with Express, Handlebars, Sequelize, Passport and Local
 * Add `.env` file with the following content:
 
 ```
-process.env.SEQUELIZE_USER=your_mysql_db_user
-process.env.SEQUELIZE_PASSWORD=your_mysql_db_password
-process.env.SEQUELIZE_HOST=your_mysql_db_host
-process.env.AUTH_SECRET=your_auth_secret_key
+SEQUELIZE_USER=your_mysql_db_user
+SEQUELIZE_PASSWORD=your_mysql_db_password
+SEQUELIZE_HOST=your_mysql_db_host
+AUTH_SECRET=your_auth_secret_key
+ADMIN_USER_PWD=admin_password
 ```

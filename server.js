@@ -41,10 +41,10 @@ if (app.get('env') !== 'development') {
 
 db.sequelize.sync({force: true}).then(() => {
   db.User.create({
-    firstName: 'System',
-    lastName: 'Admin',
-    email: 'a@p.co',
-    password: 'test',
+    firstName: 'Joe',
+    lastName: 'Gates',
+    email: 'j@g.co',
+    password: process.env.ADMIN_USER_PWD,
     isAdmin: true
   });
   app.listen(PORT, () => {

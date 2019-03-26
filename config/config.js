@@ -6,7 +6,7 @@ module.exports = {
     details: {
       host: process.env.SEQUELIZE_HOST,
       port: 3306,
-      dialect: mysql
+      dialect: 'mysql'
     }
   },
   test: {
@@ -16,11 +16,11 @@ module.exports = {
     details: {
       host: process.env.SEQUELIZE_HOST,
       port: 3306,
-      dialect: mysql
+      dialect: 'mysql'
     }
   },
   production: {
-    'use_env_variable': JAWSDB_URL,
-    dialect: mysql
+    'use_env_variable': 'JAWSDB_URL',
+    dialect: 'mysql'
   }
 };
