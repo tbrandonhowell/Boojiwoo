@@ -120,12 +120,12 @@ $('#login').on('click', function(event) {
   };
   
   $.post('/api/login', user, (result) => {
-    console.log(result);
-    if(result) {
-      // $(location).attr('href', '/dashboard');
+    // console.log(result);
+    if(result.loggedIn) {
+      $(location).attr('href', '/dashboard');
     } else {
-      $('#user-info').modal('close');
-      alert('oops something went wrong, please try again!');
+      $('#login-err-msg').empty('').text(result.error);
+      $('#user-info').modal('hide');
     }
   });
 });

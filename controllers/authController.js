@@ -1,4 +1,4 @@
-module.exports = (db) => {
+module.exports = (passport, db) => {
   return {
     register: (req, res) => {
       if (!req.body.email || !req.body.password) {
@@ -21,12 +21,16 @@ module.exports = (db) => {
         res.status(403).json({ error: 'Email already exists!' });
       });
     },
-    login: (req, res) => {
-      if (req.user) {
-        return res.status(200).json(true);
-      } else {
-        res.status(401).json({ error: 'Can not log in, check your user name and password!' });
-      }
+    login: function (req, res, next) {
+      passport.authenticate('local', function(err, user) {
+        if (err) {
+          return next(err);
+        }
+        if(user) {
+          return res.status(200).json({ loggedIn: true });
+        }
+        res.json({ loggedIn: false, error: 'Can not log in, check your user name and password!' });
+      })(req, res, next);
     },
     logout: (req, res, next) => {
       req.logout();

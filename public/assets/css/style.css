@@ -18,57 +18,19 @@ body {
   border: 1px solid white;
 }
 
-#rentModal{
-  /* opacity:0.9; */
-  text-align: center;
-  color: gray;
-}
-
-#rentModalFooter{
-  background-color:orange;
-  border-color: orange; 
-  color: black;
-}
-
-.cards-wrap {
-    margin-top: 10%;
-}
-.item-card {
-    position: relative;
-    background: rgba(0,0,0,.7);
-    color: #000;
-}
-.price-wrap {
-    position: absolute;
-    right: -32px;
-    top: -24px;
-    width: 75px;
-    height: 75px;
-    background-color: #00adb5;
-    border: 3px solid #fff;
-    border-radius: 100%;
-    padding-top: 20px;
-    padding-left: 6px;
-    color: #fff;
-    font-size: 22px;
-}
-
-#user-form, .header-wrap, #create-form, .create-acct-wrap {
+#user-form, .header-wrap, #create-form, .create-user-wrap {
   padding: 20px;
   border-radius: 15px;
   margin: 20px 0;
 }
 
-#update-err-msg{
+#update-err-msg,
+#login-err-msg,
+#create-err-msg {
   color: red !important;
 }
 
-
-#create-err-msg{
-  color: red !important;
-}
-
-#go-home{
+#go-home {
  width: auto;
  height: 65px;
 }
@@ -83,26 +45,7 @@ body {
   width: 600px;
 }
 
-.card-body {
-  color: white;
-}
-
-.card-img-top {
-  width: 70%;
-  background: white;
-  margin-top: 22px;
-}
-.card-title {
-  font-size: 1.8em;
-}
-
-[data-search="true"] {
-  color: white !important;
-}
-[data-post="true"] {
-  color: white !important;
-}
-[data-user="true"] {
+[data-useremail="true"] {
   color: white !important;
 }
 [data-register="true"] {
@@ -114,7 +57,7 @@ body {
   font-weight: 500;
 }
 
-.userID h2, .header-wrap h1 {
+.userId h2, .header-wrap h1 {
   text-transform: capitalize;
 }
 
