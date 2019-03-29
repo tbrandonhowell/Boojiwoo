@@ -3,7 +3,7 @@ $('#add-user').on('click', function (event) {
 
   const newAccount = {
     firstName: $('#inputFirst').val().trim(),
-    lastName: $('#inputLast').val().trim(),
+    lastName: $('#inputUserName').val().trim(),
     email: $('#inputEmail').val().trim(),
     password: $('#inputPassword').val().trim()
   };

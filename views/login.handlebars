@@ -1,0 +1,65 @@
+{{> nav/nav-block}}
+
+{{!-- <div id="main-container" class="container">
+  <div class="jumbotron text-center header-wrap" align="center">
+    <p class="lead">Welcome to <strong>Sample App</strong></p>
+    <hr class="my-4">
+    <div>
+      {{#if isloggedin}}
+        You are logged in as {{user.firstName}}
+        <a href="/logout"> <button type="btn" class="btn">Logout</button></a>
+      {{else}}
+        <p>You need to log in to use this app.</p>
+      {{/if}}
+      <h5 id="login-err-msg"></h5>
+    </div>
+  </div>
+</div> --}}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-1">
+            <!-- spacing -->
+        </div>
+        <div class="col-md-5" id="logoDiv">
+            <img src="assets/images/logo-slug.png" id="logoimage" class="mb-3">
+        </div>
+        <div class="col-md-5">
+            
+            <div id="formDiv">
+
+                <h1 class="text-white text-center mt-0">Good <span id="dayTime">morning</span>,<br> welcome back!</h1>
+
+                <p class="text-white text-center">Login to confirm tasks and earn Woopoints:</p>
+
+                <form>
+                    <div class="form-group row">
+                        <div class="col-sm-3 pl-0">
+                            <label for="inputAccount" class="col-sm-2 col-form-label text-white font-weight-bold">Email:</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="email" placeholder="email@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 pl-0">
+                            <label for="inputAccount" class="col-sm-2 col-form-label text-white font-weight-bold">Password:</label>
+                        </div>
+                        <!-- <label for="inputPassword" class="col-sm-2 col-form-label text-white font-weight-bold">Password:</label> -->
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="user_password" placeholder="Password">
+                        </div>
+                    </div>
+                    <button type="button" id="login" class="btn btn-success btn-block whiteborder">Log in to Boojiwoo</button>
+                </form>
+
+                <p class="text-white text-center mt-3">New to Boojiwoo? <a href="#" class="text-white underlink">Sign up for an account.</a></p>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <!-- spacing -->
+        </div>
+    </div>
+</div>
+
+{{!-- {{> modal/login-block}} --}}
