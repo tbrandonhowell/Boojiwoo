@@ -3,12 +3,12 @@ $('#add-user').on('click', function (event) {
 
   const newAccount = {
     firstName: $('#inputFirst').val().trim(),
-    lastName: $('#inputUserName').val().trim(),
+    userName: $('#inputUserName').val().trim(),
     email: $('#inputEmail').val().trim(),
     password: $('#inputPassword').val().trim()
   };
 
-  if (newAccount.password.length > 0 && newAccount.email.length > 0 && newAccount.password.length > 0 && newAccount.lastName.length > 0 && newAccount.firstName.length > 0) {
+  if (newAccount.password.length > 0 && newAccount.email.length > 0 && newAccount.password.length > 0 && newAccount.userName.length > 0 && newAccount.firstName.length > 0) {
     $.ajax({
       type: 'POST',
       url: '/api/register',
@@ -30,7 +30,7 @@ $('#update-user').on('click', function (event) {
   // capture All changes
   const changeUser = {
     firstName: $('#inputFirst').val().trim(),
-    lastName: $('#inputLast').val().trim(),
+    userName: $('#inputLast').val().trim(),
     email: $('#inputEmail').val().trim(),
     password: $('#inputPassword').val().trim()
   };
@@ -38,7 +38,7 @@ $('#update-user').on('click', function (event) {
   // $('#change-user-modal').modal('show');
   console.log(changeUser);
 
-  if (changeUser.password.length > 0 && changeUser.email.length > 0 && changeUser.password.length > 0 && changeUser.lastName.length > 0 && changeUser.firstName.length > 0) {
+  if (changeUser.password.length > 0 && changeUser.email.length > 0 && changeUser.password.length > 0 && changeUser.userName.length > 0 && changeUser.firstName.length > 0) {
     $.ajax({
       type: 'PUT',
       url: `/api/user/${id}`,
