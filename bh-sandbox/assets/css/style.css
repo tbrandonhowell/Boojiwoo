@@ -37,6 +37,13 @@ from: https://leaverou.github.io/bubbly/
 	margin-bottom: -34px;
 }
 
+
+.blocked {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+  }
+
+
 @media only screen and (max-width: 767px) {
     #logoimage {
         max-width: 50%;

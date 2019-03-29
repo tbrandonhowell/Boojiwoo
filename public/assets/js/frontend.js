@@ -1,5 +1,7 @@
 window.onload = function() {
 
+    console.log("frontend.js is loaded");
+
     // homepage div fix
     // THIS SHOULD REALLY BE FUNCTIONIZED TO WORK IN BOTH DIRECTIONS
     let logoHeight = $('#logoDiv').height();
@@ -12,7 +14,7 @@ window.onload = function() {
             console.log("logo is larger");
             let newTopMargin = (logoHeight - formHeight) / 2;
             console.log({newTopMargin});
-            $('#formDiv').attr("style","margin-top: " + newTopMargin);
+            $('#formDiv').attr("style","margin-top: " + newTopMargin + "px");
         } else {
             // something;
         }
