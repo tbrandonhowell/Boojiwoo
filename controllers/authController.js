@@ -56,7 +56,7 @@ module.exports = (passport, db) => {
         userName: req.body.userName,
         password: req.body.password
       }, {
-        where: { id: req.params.id }
+        where: { userId: req.params.id }
       }).then(result => {
         // console.log(result);
         res.json(result);
