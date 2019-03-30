@@ -53,6 +53,17 @@ module.exports = (db) => {
     }
   });
 
+
+  router.get('/upgrade', (req,res) => {
+    if (req.isAuthenticated()) {
+      // whatever it is we're going to need build out this page
+      res.render('store');
+    } else {
+      res.render('login');
+    }
+  })
+
+
   router.get('/dashboard', (req, res) => {
     if (req.isAuthenticated()) {
       const user = {
