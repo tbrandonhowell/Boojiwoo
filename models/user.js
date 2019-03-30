@@ -5,21 +5,27 @@ module.exports = function (sequelize, DataTypes) {
     userName: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
+      allowNull: false,
+      unique: {
+        args: true,
+        msg: 'User already exists'
+      }
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false
     },
     firstName: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: true
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       unique: {
         args: true,
-        msg: 'User already exists'
+        msg: 'Email already exists'
       }
     }
     // keeping this below for possible later use
