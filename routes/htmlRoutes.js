@@ -47,7 +47,7 @@ module.exports = (db) => {
         user: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
-      res.render('dashboard', user);
+      res.render('tasks', user);
     } else {
       res.render('login');
     }

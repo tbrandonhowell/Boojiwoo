@@ -32,6 +32,8 @@
 
                 <p class="text-white text-center">Login to confirm tasks and earn Woopoints:</p>
 
+                <h5 id="login-err-msg" class="text-center text-warning"></h5>
+
                 <form>
                     <div class="form-group row">
                         <div class="col-sm-3 pl-0">
@@ -45,7 +47,6 @@
                         <div class="col-sm-3 pl-0">
                             <label for="inputAccount" class="col-sm-2 col-form-label text-white font-weight-bold">Password:</label>
                         </div>
-                        <!-- <label for="inputPassword" class="col-sm-2 col-form-label text-white font-weight-bold">Password:</label> -->
                         <div class="col-sm-9">
                             <input type="password" class="form-control" id="user_password" placeholder="Password">
                         </div>
@@ -53,13 +54,13 @@
                     <button type="button" id="login" class="btn btn-success btn-block whiteborder">Log in to Boojiwoo</button>
                 </form>
 
-                <p class="text-white text-center mt-3">New to Boojiwoo? <a href="#" class="text-white underlink">Sign up for an account.</a></p>
+                <p class="text-white text-center mt-3">New to Boojiwoo? <a href="/register" class="text-white underlink">Sign up for an account.</a></p>
             </div>
         </div>
         <div class="col-md-1">
             <!-- spacing -->
         </div>
     </div>
-</div>
+</div> <!-- close container -->
 
 {{!-- {{> modal/login-block}} --}}
