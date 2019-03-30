@@ -28,7 +28,7 @@ app.use('/api', require('./routes/apiRoutes')(passport, db));
 
 // Secure express app
 app.use(helmet.hsts({
-  maxAge: moment.duration(1, 'years').asMilliseconds(),
+  maxAge: moment.duration(1, 'years').asMilliseconds()
 }));
 
 // catch 404 and forward to error handler
@@ -41,11 +41,11 @@ if (app.get('env') !== 'development') {
 }
 
 db.sequelize.sync({ force: process.env.FORCE_SYNC === 'true' }).then(() => {
-  if(process.env.FORCE_SYNC === 'true') {
+  if (process.env.FORCE_SYNC === 'true') {
     require('./db/seed')(db);
   }
 
   app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
-  });  
+  });
 });
