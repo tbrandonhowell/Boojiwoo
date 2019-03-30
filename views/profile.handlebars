@@ -1,76 +1,55 @@
-{{> nav/nav-block user=true register=false}}
+{{> nav/nav-block user=false register=true}}
+
 
 <div class="container">
   <header align="center" class="header-wrap">
     <h1>View or update your user</h1>
-    <div class="userId">
-      <h3>Welcome, {{userInfo.firstName}}</h3>
-      <h5 id="user-number" data-useremail="{{userInfo.email}}">Account email: {{userInfo.email}}</h5>
-    </div>
-    <h3 id="update-err-msg"></h3>
-  </header>
-
-  <form id="user-form">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputFirst">First Name</label>
-        <input type="text" class="form-control" id="inputFirst" value="{{userInfo.firstName}}" placeholder="John">
+  <div class="row mt-5">
+      <div class="col-md-1">
+          <!-- spacing -->
       </div>
-      <div class="form-group col-md-6">
-        <label for="inputLast">Last Name</label>
-        <input type="text" class="form-control" id="inputLast" value="{{userInfo.lastName}}" placeholder="Doe">
+      <div class="col-md-5" id="logoDiv">
+          <img src="assets/images/logo-slug.png" id="logoimage" class="mb-3">
       </div>
-    </div>
+      <div class="col-md-5">
+          
+          <div id="formDiv">
 
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputPassword">Email</label>
-        <input type="text" class="form-control" id="inputEmail" value="{{userInfo.email}}">
+              <h1 class="text-white text-center mt-0">Update your Boojiwoo!</h1>
+
+              {{!-- All of these fields were present in Alper's example --}}
+              <h2 id="message" class="text-warning text-center"></h2>
+              <h3 id="create-err-msg" class="text-warning text-center"></h3>
+              <h3 id="err-msg" class="text-warning text-center"></h3>
+
+              <form id= "create-form">
+                  <div class="form-group">
+                      <small><label for="inputUserName" class="col-form-label text-white font-weight-bold">Username:*</label></small>
+                      <input type="text" class="form-control" id="inputUserName" placeholder="Username">
+                  </div>
+                  <div class="form-group">
+                      <small><label for="inputPassword" class="col-form-label text-white font-weight-bold">Password:*</label></small>
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                      <small><label for="inputFirst" class="col-form-label text-white font-weight-bold">First Name:</label></small>
+                      <input type="text" class="form-control" id="inputFirst" placeholder="(Billy, Jane, etc)">
+                  </div>
+                  <div class="form-group">
+                      <small><label for="inputEmail" class="col-form-label text-white font-weight-bold">Email:</label></small>
+                      <input type="text" class="form-control" id="inputEmail" placeholder="email@example.com">
+                      </div>
+                  <button type="submit" class="btn btn-success btn-block whiteborder" id="add-user">Update</button>
+              </form>
+
+              <p class="text-white text-center mt-3"><a href="/" class="text-white underlink">Cancel and return to homepage.</a></p>
+          </div>
       </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" value="{{userInfo.password}}">
+      <div class="col-md-1">
+          <!-- spacing -->
       </div>
-    </div>
-
-    <div>
-      <button type="submit" id="update-user" data-id="{{userInfo.id}}" class="btn btn-primary">Update</button>
-      {{#unless userInfo.isAdmin}}
-        <button type="submit" id="delete-user" class="btn btn-primary">Delete</button>
-      {{/unless}}
-      <button type="submit" id="view-user" data-id="{{userInfo.id}}" class="btn btn-primary">Refresh</button>
-    </div>
-  </form>
-
-  <div class="modal" id="delete-user-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Re-Enter Credentials to delete user</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <h3 id="err-msg"></h3>
-          <form>
-            <div class="form-group">
-              <label for="userEmail">Email:</label>
-              <input type="text" class="form-control" id="userEmail">
-            </div>
-            <div class="form-group">
-              <label for="userPassword">Password:</label>
-              <input type="password" class="form-control" id="userPassword">
-            </div>
-          </form>
-        </div>
-
-        <div class="modal-footer">
-          <button id="confirm-delete" type="button" data-id="{{userInfo.id}}" class="btn btn-primary">Confirm Delete</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Nah I'll stay</button>
-        </div>
-      </div>
-    </div>
   </div>
-</div>
+</div> <!-- close container -->
+
+<!-- new stuff stops here -->
+

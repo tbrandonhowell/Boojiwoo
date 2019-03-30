@@ -1,55 +1,55 @@
 {{> nav/nav-block user=false register=true}}
 
 <div class="container">
-  <div class="row">
-    <div class="col col-md-12">
-      <header class="create-user-wrap header-wrap" align="center">
-        <h1>Create Your Account</h1>
-        <h3 id="create-err-msg"></h3>
-      </header>
+  <div class="row mt-5">
+      <div class="col-md-1">
+          <!-- spacing -->
+      </div>
+      <div class="col-md-5" id="logoDiv">
+          <img src="assets/images/logo-slug.png" id="logoimage" class="mb-3">
+      </div>
+      <div class="col-md-5">
+          
+          <div id="formDiv">
 
-      <h3 id="err-msg"></h3>
+              <h1 class="text-white text-center mt-0">Create your Boojiwoo!</h1>
 
+              {{!-- All of these fields were present in Alper's example --}}
+              <h2 id="message" class="text-warning text-center"></h2>
+              <h3 id="create-err-msg" class="text-warning text-center"></h3>
+              <h3 id="err-msg" class="text-warning text-center"></h3>
 
-      <form id= "create-form">
-        
+              <form id= "create-form">
+                  <div class="form-group">
+                      <small><label for="inputUserName" class="col-form-label text-white font-weight-bold">Username:*</label></small>
+                      <input type="text" class="form-control" id="inputUserName" placeholder="Username">
+                  </div>
+                  <div class="form-group">
+                      <small><label for="inputPassword" class="col-form-label text-white font-weight-bold">Password:*</label></small>
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                      <small><label for="inputFirst" class="col-form-label text-white font-weight-bold">First Name:</label></small>
+                      <input type="text" class="form-control" id="inputFirst" placeholder="(Billy, Jane, etc)">
+                  </div>
+                  <div class="form-group">
+                      <small><label for="inputEmail" class="col-form-label text-white font-weight-bold">Email:</label></small>
+                      <input type="text" class="form-control" id="inputEmail" placeholder="email@example.com">
+                      </div>
+                  <button type="submit" class="btn btn-success btn-block whiteborder" id="add-user">Submit</button>
+              </form>
 
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <label for="inputUserName">Username</label>
-            <input type="text" class="form-control" id="inputUserName" placeholder="Eggy123" required>
+              <p class="text-white text-center mt-3"><a href="/" class="text-white underlink">Cancel and return to homepage.</a></p>
           </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <label for="inputEmail">Email</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="Eggy@aol.com">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <label for="inputFirst">First Name</label>
-            <input type="text" class="form-control" id="inputFirst" placeholder="Eduardo">
-          </div>
-        </div>
-
-        
-
-        <div>
-          <h2 id="message"></h2>
-        </div>
-
-        <button type="submit" id="add-user" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
+      </div>
+      <div class="col-md-1">
+          <!-- spacing -->
+      </div>
   </div>
-</div>
+</div> <!-- close container -->
+
+<!-- new stuff stops here -->
+
+
+
+      
