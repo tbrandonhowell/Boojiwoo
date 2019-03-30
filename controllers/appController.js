@@ -7,7 +7,8 @@ module.exports = function () {
           message: 'you should see this only if you are logged in.'
         }
       });
-    },
+    }
+    /*
     newTask: (req, res) => {
     },
     getTasks: (req, res) => {
@@ -23,6 +24,7 @@ module.exports = function () {
     purchaseSwag: (req, res) => {
     },
     updateAvatar: (req, res) => {
-    },
+    }
+    */
   };
 };
