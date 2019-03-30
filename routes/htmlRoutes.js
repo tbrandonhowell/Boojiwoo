@@ -28,15 +28,28 @@ module.exports = (db) => {
     }
   });
 
+  // Original Route:
+  // router.get('/', (req, res) => {
+  //   if (req.isAuthenticated()) {
+  //     const user = {
+  //       user: req.session.passport.user,
+  //       isloggedin: req.isAuthenticated()
+  //     };
+  //     res.render('dashboard', user);
+  //   } else {
+  //     res.render('dashboard');
+  //   }
+  // });
+
   router.get('/', (req, res) => {
     if (req.isAuthenticated()) {
       const user = {
         user: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
-      res.render('dashboard', user);
+      res.render('tasks', user);
     } else {
-      res.render('dashboard');
+      res.render('login');
     }
   });
 

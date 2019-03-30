@@ -1,0 +1,53 @@
+.whiteborder {
+    border: 1px solid #ffffff;
+}
+.underlink {
+    text-decoration: underline;
+}
+#logoimage {
+    display: block;
+    max-width: 100%;
+    height: auto;
+} 
+
+/*
+from: https://leaverou.github.io/bubbly/
+*/
+
+.speech-bubble {
+	position: relative;
+	background: #ffffff;
+    border-radius: .4em;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 40%;
+	width: 0;
+	height: 0;
+	border: 34px solid transparent;
+	border-top-color: #ffffff;
+	border-bottom: 0;
+	border-left: 0;
+	margin-left: -17px;
+	margin-bottom: -34px;
+}
+
+
+.blocked {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+  }
+
+
+@media only screen and (max-width: 767px) {
+    #logoimage {
+        max-width: 50%;
+        height: auto;
+        margin: auto;
+    }      
+  }
