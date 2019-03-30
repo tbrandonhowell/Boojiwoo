@@ -53,5 +53,26 @@ window.onload = function() {
 
     });
 
+    // capture clicks on task buttons
+    $(".task-button").on("click", function (event) {
+        event.preventDefault();
+        let taskConfirmedName = $(this).text();
+        console.log(taskConfirmedName);
+        if (taskConfirmedName === "None Yet") {
+            // trigger sad modal
+            $('#noneYetModal').modal().show();
+        } else {
+            // trigger happy modal
+            $("#taskModalLongTitle").text(taskConfirmedName);
+            $('#taskModal').modal().show();
+        }
+        // trigger div w/ task info in it using variable
+        // ajax call to DB to mark task as complete
+    });
 
+
+    // boojiwoo clearfix but w/ js
+    let boojHeight = $('#buildOutfit').height();
+    console.log({boojHeight});
+    $('#buildImage').attr('style','height: ' + boojHeight + 'px');
 };
