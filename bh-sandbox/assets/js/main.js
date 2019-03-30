@@ -50,6 +50,15 @@ window.onload = function() {
         }
 
     });
+}; // close onload
 
-
-};
+// capture clicks on task buttons
+$(".task-button").on("click", function (event) {
+    event.preventDefault();
+    let taskConfirmedName = $(this).text();
+    console.log(taskConfirmedName);
+    // capture the task name
+    // save task name to variable
+    // trigger div w/ task info in it using variable
+    // ajax call to DB to mark task as complete
+});

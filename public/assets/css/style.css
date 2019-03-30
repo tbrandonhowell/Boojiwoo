@@ -113,6 +113,27 @@ margin-bottom: -34px;
   filter: grayscale(100%);
 }
 
+#buildImage {
+  position: relative;
+}
+#buildOutfit {
+  z-index: 5;
+  position: absolute;
+}
+#buildEyes {
+  z-index: 4;
+  position: absolute;
+}
+#buildMouth {
+  z-index: 3;
+  position: absolute;
+}
+#buildBody {
+  z-index: 2;
+  position: absolute;
+}
+
+
 
 @media only screen and (max-width: 767px) {
   #logoimage {
