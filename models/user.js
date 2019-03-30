@@ -2,15 +2,16 @@ const bcrypt = require('bcrypt');
 
 module.exports = function (sequelize, DataTypes) {
   let User = sequelize.define('User', {
-    id: {
+    userName: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    firstName: {
-      type: DataTypes.STRING
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    lastName: {
+    firstName: {
       type: DataTypes.STRING
     },
     email: {
@@ -20,15 +21,12 @@ module.exports = function (sequelize, DataTypes) {
         args: true,
         msg: 'User already exists'
       }
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    isAdmin: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
     }
+    // keeping this below for possible later use
+    // isAdmin: {
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: false
+    // }
   }, {
     timestamps: true,
     hooks: {
