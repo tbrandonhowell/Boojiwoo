@@ -34,7 +34,7 @@ module.exports = (passport, db) => {
             return res.status(200).json({ loggedIn: true });
           });
         } else {
-          res.json({ loggedIn: false, error: 'Can not log in, check your user name and password!' });
+          res.json({ loggedIn: false, error: 'Can not log in, check your Username and Password!' });
         }
       })(req, res, next);
     },
@@ -63,11 +63,11 @@ module.exports = (passport, db) => {
       });
     },
     confirmAuth: (req, res) => {
-      const email = req.body.email;
+      const userName = req.body.userName;
       const pwd = req.body.password;
 
       db.User.findOne({
-        where: { email: email }
+        where: { userName: userName }
       }).then((user) => {
         if (!user) {
           return res.json(false);
