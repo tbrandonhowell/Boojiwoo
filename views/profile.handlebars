@@ -9,7 +9,7 @@
           <!-- spacing -->
       </div>
       <div class="col-md-5" id="logoDiv">
-          <img src="assets/images/logo-slug.png" id="logoimage" class="mb-3">
+          <img src="assets/images/png/boojiwoo-logo-export.png" id="logoimage" class="mb-3">
       </div>
       <div class="col-md-5">
           
@@ -18,28 +18,26 @@
               <h1 class="text-white text-center mt-0">Update your Boojiwoo!</h1>
 
               {{!-- All of these fields were present in Alper's example --}}
-              <h2 id="message" class="text-warning text-center"></h2>
-              <h3 id="create-err-msg" class="text-warning text-center"></h3>
-              <h3 id="err-msg" class="text-warning text-center"></h3>
+              <h3 id="update-err-msg" class="text-warning text-center"></h3>
 
               <form id= "create-form">
                   <div class="form-group">
                       <small><label for="inputUserName" class="col-form-label text-white font-weight-bold">Username:*</label></small>
-                      <input type="text" class="form-control" id="inputUserName" placeholder="Username">
+                      <input type="text" class="form-control" id="inputUserName" value="{{userInfo.userName}}">
                   </div>
                   <div class="form-group">
                       <small><label for="inputPassword" class="col-form-label text-white font-weight-bold">Password:*</label></small>
-                      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                      <input type="password" class="form-control" id="inputPassword" value="{{userInfo.password}}">
                   </div>
                   <div class="form-group">
                       <small><label for="inputFirst" class="col-form-label text-white font-weight-bold">First Name:</label></small>
-                      <input type="text" class="form-control" id="inputFirst" placeholder="(Billy, Jane, etc)">
+                      <input type="text" class="form-control" id="inputFirst" value="{{userInfo.firstName}}">
                   </div>
                   <div class="form-group">
                       <small><label for="inputEmail" class="col-form-label text-white font-weight-bold">Email:</label></small>
-                      <input type="text" class="form-control" id="inputEmail" placeholder="email@example.com">
+                      <input type="text" class="form-control" id="inputEmail" value="{{userInfo.email}}">
                       </div>
-                  <button type="submit" class="btn btn-success btn-block whiteborder" id="add-user">Update</button>
+                  <button type="submit" class="btn btn-success btn-block whiteborder" id="update-user">Update</button>
               </form>
 
               <p class="text-white text-center mt-3"><a href="/" class="text-white underlink">Cancel and return to homepage.</a></p>

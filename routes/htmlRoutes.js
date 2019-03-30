@@ -13,7 +13,7 @@ module.exports = (db) => {
     if (req.isAuthenticated()) {
       db.User.findOne({
         where: {
-          id: req.session.passport.user.id
+          userId: req.session.passport.user.id
         }
       }).then(() => {
         const user = {
