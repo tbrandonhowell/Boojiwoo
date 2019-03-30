@@ -10,7 +10,7 @@ module.exports = (passport, db) => {
           email: req.body.email,
           password: req.body.password,
           firstName: req.body.firstName,
-          lastName: req.body.lastName
+          userName: req.body.userName
         };
 
         return db.User.create(newUser).then(() => {
@@ -34,7 +34,7 @@ module.exports = (passport, db) => {
             return res.status(200).json({ loggedIn: true });
           });
         } else {
-          res.json({ loggedIn: false, error: 'Can not log in, check your Username and Password!' });
+          res.json({ loggedIn: false, error: 'Can not log in, check your Username and Pgit assword!' });
         }
       })(req, res, next);
     },
@@ -63,11 +63,11 @@ module.exports = (passport, db) => {
       });
     },
     confirmAuth: (req, res) => {
-      const email = req.body.email;
+      const userName = req.body.userName;
       const pwd = req.body.password;
 
       db.User.findOne({
-        where: { email: email }
+        where: { userName: userName }
       }).then((user) => {
         if (!user) {
           return res.json(false);

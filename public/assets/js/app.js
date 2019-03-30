@@ -32,7 +32,7 @@ $('#update-user').on('click', function (event) {
   // capture All changes
   const changeUser = {
     firstName: $('#inputFirst').val().trim(),
-    lastName: $('#inputLast').val().trim(),
+    userName: $('#inputUserName').val().trim(),
     email: $('#inputEmail').val().trim(),
     password: $('#inputPassword').val().trim()
   };
