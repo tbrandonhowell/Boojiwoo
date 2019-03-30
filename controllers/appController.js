@@ -8,5 +8,23 @@ module.exports = function () {
         }
       });
     }
+    /*
+    newTask: (req, res) => {
+    },
+    getTasks: (req, res) => {
+    },
+    updateTask: (req, res) => {
+    },
+    completeTask: (req, res) => {
+    },
+    getAllSwag: (req, res) => {
+    },
+    getOwnedSwag: (req, res) => {
+    },
+    purchaseSwag: (req, res) => {
+    },
+    updateAvatar: (req, res) => {
+    }
+    */
   };
 };
