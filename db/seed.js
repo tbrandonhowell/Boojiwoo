@@ -100,6 +100,12 @@ module.exports = (db) => {
     fileName: '/assets/images/png/eyes-5.png',
     pointCost: 1
   });
+  db.SwagStore.create({
+    swagType: 'eyes',
+    description: '',
+    fileName: '/assets/images/png/eyes-6.png',
+    pointCost: 1
+  });
   // start mouth
   db.SwagStore.create({
     swagType: 'mouth',
@@ -174,6 +180,25 @@ module.exports = (db) => {
     fileName: '/assets/images/png/outfit-4.png',
     pointCost: 1
   });
+  db.SwagStore.create({
+    swagType: 'outfit',
+    description: '',
+    fileName: '/assets/images/png/outfit-5.png',
+    pointCost: 1
+  });
+  db.SwagStore.create({
+    swagType: 'outfit',
+    description: '',
+    fileName: '/assets/images/png/outfit-6.png',
+    pointCost: 1
+  });
+  db.SwagStore.create({
+    swagType: 'outfit',
+    description: '',
+    fileName: '/assets/images/png/outfit-7.png',
+    pointCost: 1
+  });
+
 
   /*
         Default swagOwned
