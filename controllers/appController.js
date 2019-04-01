@@ -122,18 +122,18 @@ module.exports = function () {
           }
       */
       db.SwagStore.findAll({
+        attributes: [
+          'swagId', 'swagType', 'description', 'fileName', 'pointCost',
+          [db.sequelize.literal('CASE WHEN NULLIF(swagOwneds.userId,\'\') IS NULL THEN false ELSE true END'), 'owned']
+        ],
         include: [{
           model: db.SwagOwned,
           required: false,
           where: {
             userId: req.body.userId
-          },
-          attributes: [[
-            db.sequelize.literal('CASE WHEN NULLIF(swagOwneds.userId,\'\') IS NULL THEN false ELSE true END'),
-            'Owned'
-          ]]
+          }
         }]
-      }).then((confirm) =>{
+      }).then((confirm) => {
         res.status(200).json(confirm);
       });
     },
