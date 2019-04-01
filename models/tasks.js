@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       dueNext: {
           type: DataTypes.DATE,
+          defaultValue: DataTypes.NOW
       },
       points: {
           type: DataTypes.INTEGER,

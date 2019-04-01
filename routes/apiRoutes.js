@@ -15,6 +15,14 @@ module.exports = (passport, db) => {
 
   // App
   router.get('/data', ensureAuthenticated, AppController.getData);
+  router.post('/newTask', ensureAuthenticated, AppController.newTask);
+  router.post('/updateTask', ensureAuthenticated, AppController.updateTask);
+  router.post('/completeTask', ensureAuthenticated, AppController.completeTask);
+  router.get('/getTasks', ensureAuthenticated, AppController.getTasks);
+  router.delete('/deleteTask', ensureAuthenticated, AppController.deleteTask);
+  router.post('/purchaseSwag', ensureAuthenticated, AppController.purchaseSwag);
+  router.get('/getSwag', ensureAuthenticated, AppController.getSwag);
+  router.post('/updateAvatar', ensureAuthenticated, AppController.updateAvatar);
 
   return router;
 };
