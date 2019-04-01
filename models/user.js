@@ -92,6 +92,5 @@ module.exports = function (sequelize, DataTypes) {
     delete values.password;
     return values;
   };
-
   return User;
 };

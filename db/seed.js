@@ -340,7 +340,7 @@ module.exports = (db) => {
     userId: 1,
     description: 'Lay out your clothes for tomorrow',
     frequency: 1,
-    dueNext: 1,
+    dueNext: 2,
     points: 1,
   });
   db.Tasks.create({
@@ -375,7 +375,7 @@ module.exports = (db) => {
     userId: 2,
     description: 'Brush your teeth',
     frequency: 1,
-    dueNext: 1,
+    dueNext: '2019-03-31 00:00:00',
     points: 1,
   });
   db.Tasks.create({
