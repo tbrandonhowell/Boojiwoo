@@ -2,23 +2,21 @@ const bcrypt = require('bcrypt');
 
 module.exports = function (sequelize, DataTypes) {
   let User = sequelize.define('User', {
-    userName: {
+    userId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true,
-      allowNull: false,
-      unique: {
-        args: true,
-        msg: 'User already exists'
-      }
+      primaryKey: true
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
+    parentId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
     firstName: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    userName: {
+      type: DataTypes.STRING
     },
     email: {
       type: DataTypes.STRING,
@@ -27,6 +25,34 @@ module.exports = function (sequelize, DataTypes) {
         args: true,
         msg: 'Email already exists'
       }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    points: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    avatarColor: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    avatarEyes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    avatarMouth: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    avatarHat: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
     // keeping this below for possible later use
     // isAdmin: {

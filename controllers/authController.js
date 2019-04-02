@@ -34,7 +34,7 @@ module.exports = (passport, db) => {
             return res.status(200).json({ loggedIn: true });
           });
         } else {
-          res.json({ loggedIn: false, error: 'Can not log in, check your Username and Pgit assword!' });
+          res.json({ loggedIn: false, error: 'Can not log in, check your Username and Password!' });
         }
       })(req, res, next);
     },
@@ -53,7 +53,7 @@ module.exports = (passport, db) => {
       db.User.update({
         email: req.body.email,
         firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        userName: req.body.userName,
         password: req.body.password
       }, {
         where: { id: req.params.id }
