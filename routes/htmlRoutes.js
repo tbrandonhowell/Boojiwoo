@@ -13,14 +13,14 @@ module.exports = (db) => {
     if (req.isAuthenticated()) {
       db.User.findOne({
         where: {
-          id: req.session.passport.user.id
+          userId: req.session.passport.user.id
         }
       }).then(() => {
         const user = {
           userInfo: req.session.passport.user,
           isloggedin: req.isAuthenticated()
         };
-        // console.log(user);
+        console.log(user);
         res.render('profile', user);
       });
     } else {
@@ -52,6 +52,17 @@ module.exports = (db) => {
       res.render('login');
     }
   });
+
+
+  router.get('/upgrade', (req,res) => {
+    if (req.isAuthenticated()) {
+      // whatever it is we're going to need build out this page
+      res.render('store');
+    } else {
+      res.render('login');
+    }
+  })
+
 
   router.get('/dashboard', (req, res) => {
     if (req.isAuthenticated()) {

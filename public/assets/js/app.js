@@ -1,14 +1,16 @@
 $('#add-user').on('click', function (event) {
   event.preventDefault();
-
+  
   const newAccount = {
-    firstName: $('#inputFirst').val().trim(),
     userName: $('#inputUserName').val().trim(),
+    password: $('#inputPassword').val().trim(),
     email: $('#inputEmail').val().trim(),
-    password: $('#inputPassword').val().trim()
+    firstName: $('#inputFirst').val().trim()
   };
 
-  if (newAccount.password.length > 0 && newAccount.email.length > 0 && newAccount.password.length > 0 && newAccount.userName.length > 0 && newAccount.firstName.length > 0) {
+  // only requiring userName and password
+  // if (newAccount.password.length > 0 && newAccount.email.length > 0 && newAccount.password.length > 0 && newAccount.lastName.length > 0 && newAccount.firstName.length > 0) {
+  if (newAccount.password.length > 0 && newAccount.userName.length > 0) {
     $.ajax({
       type: 'POST',
       url: '/api/register',
@@ -18,7 +20,7 @@ $('#add-user').on('click', function (event) {
     });
   } else {
     console.log('**Please fill out entire form**');
-    $('#create-err-msg').empty('').text('**Please fill out entire form**');
+    $('#create-err-msg').empty('').text('**Username and Password are Required**');
   }
 });
 
@@ -30,7 +32,7 @@ $('#update-user').on('click', function (event) {
   // capture All changes
   const changeUser = {
     firstName: $('#inputFirst').val().trim(),
-    userName: $('#inputLast').val().trim(),
+    userName: $('#inputUserName').val().trim(),
     email: $('#inputEmail').val().trim(),
     password: $('#inputPassword').val().trim()
   };
@@ -121,7 +123,7 @@ $('#login').on('click', function (event) {
   $.post('/api/login', user, (result) => {
     // console.log(result);
     if (result.loggedIn) {
-      $(document.location).attr('href', '/dashboard');
+      $(document.location).attr('href', '/');
     } else {
       $('#login-err-msg').empty('').text(result.error);
       $('#user-info').modal('hide');

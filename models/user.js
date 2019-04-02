@@ -12,17 +12,18 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true,
     },
     firstName: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: true
     },
     userName: {
       type: DataTypes.STRING
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       unique: {
         args: true,
-        msg: 'User already exists'
+        msg: 'Email already exists'
       }
     },
     password: {
@@ -53,6 +54,11 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     }
+    // keeping this below for possible later use
+    // isAdmin: {
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: false
+    // }
   }, {
     timestamps: true,
     hooks: {
@@ -86,6 +92,5 @@ module.exports = function (sequelize, DataTypes) {
     delete values.password;
     return values;
   };
-
   return User;
 };
