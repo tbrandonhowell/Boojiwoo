@@ -12,7 +12,7 @@ module.exports = function () {
     },
     newTask: (req, res) => {
       db.Tasks.create({
-        userId: req.body.userId,
+        userId: req.session.passport.user.userId,
         description: req.body.description
       }).then((confirm) => {
         res.status(200).json({ confirm: confirm });
@@ -26,7 +26,7 @@ module.exports = function () {
         points: req.body.points
       }, {
         where: {
-          taskId: req.body.taskId
+          taskId: req.params.taskId
         }
       }).then((confirm) => {
         res.status(200).json(confirm);
@@ -34,8 +34,8 @@ module.exports = function () {
     },
     completeTask: (req, res) => {
       // get only userId and taskId - server should do everything else
-      const userId = req.body.userId;
-      const taskId = req.body.taskId;
+      const userId = req.session.passport.user.userId;
+      const taskId = req.params.taskId;
 
       // get user points
       db.User.findOne({
@@ -46,7 +46,6 @@ module.exports = function () {
         db.Tasks.findOne({
           where: { taskId: taskId }
         }).then((task) => {
-
           // update user points
           const newPoints = userPoints + task.points;
           db.User.update({
@@ -54,11 +53,11 @@ module.exports = function () {
           }, {
             where: { userId: userId }
           }).then((updatedUser) => {
-
             // calculate new due date
             const freq = task.frequency;
-            let today = new Date()
-            const dueNext = new Date(today.setTime(today.getTime() + freq * 86400000));
+            let today = new Date();
+            let dueNext = new Date(today.setTime(today.getTime() + freq * 86400000));
+            dueNext.setHours(0,0,0,0);
 
             // update task date
             db.Tasks.update({
@@ -76,11 +75,11 @@ module.exports = function () {
       // get value for tomorrow
       let tomorrow = new Date();
       tomorrow.setTime(tomorrow.getTime() + 86500000);
-      tomorrow.setHours(0,0,0,0);
+      tomorrow.setHours(0, 0, 0, 0);
       // database call
       db.Tasks.findAll({
         where: {
-          userId: req.body.userId,
+          userId: req.session.passport.user.userId,
           dueNext: {
             $lt: tomorrow
           }
@@ -92,7 +91,7 @@ module.exports = function () {
     deleteTask: (req, res) => {
       db.Tasks.destroy({
         where: {
-          taskId: req.body.taskId
+          taskId: req.params.taskId
         }
       }).then((confirm) => {
         res.status(200).json(confirm)
@@ -100,8 +99,8 @@ module.exports = function () {
     },
     purchaseSwag: (req, res) => {
       // swagId & userId lines might not be right
-      const swagId = req.body.swagId;
-      const userId = req.body.userId;
+      const swagId = req.params.swagId;
+      const userId = req.session.passport.user.userId;
       db.SwagOwned.create({
         swagId: swagId,
         userId: userId
@@ -111,16 +110,6 @@ module.exports = function () {
       });
     },
     getSwag: (req, res) => {
-      /*
-        Send back from the swagStore a list of all swag in the following format
-          {
-            swagType: 'type',
-            descrpiton: '',
-            fileName: 'filename.png',
-            pointCost: 1,
-            owned: true/false
-          }
-      */
       db.SwagStore.findAll({
         attributes: [
           'swagId', 'swagType', 'description', 'fileName', 'pointCost',
@@ -130,7 +119,7 @@ module.exports = function () {
           model: db.SwagOwned,
           required: false,
           where: {
-            userId: req.body.userId
+            userId: req.session.passport.user.userId
           }
         }]
       }).then((confirm) => {
@@ -138,6 +127,28 @@ module.exports = function () {
       });
     },
     updateAvatar: (req, res) => {
+      userId = req.session.passport.user.userId;
+      cmd = req.params.cmd
+      cmd = cmd[0].toLowerCase()
+      if (cmd === 'c') {
+        // color call
+        db.User.update({
+          avatarColor: req.body.avatarColor,
+        }, {
+          where: {
+            userId: req.session.passport.user.userId
+          }
+        }).then((confirm) => {
+          res.status(200).json(confirm);
+        });
+      } else if (cmd === 'e') {
+        // eye call
+      } else if (cmd === 'm') {
+        // mouth call
+      } else if (cmd === 'h') {
+        // hat/outfit call
+      }
+
       db.User.update({
         avatarColor: req.body.avatarColor,
         avatarEyes: req.body.avatarEyes,
@@ -145,7 +156,7 @@ module.exports = function () {
         avatarHat: req.body.avatarHat
       }, {
         where: {
-          userId: req.body.userId
+          userId: req.session.passport.user.userId
         }
       }).then((confirm) => {
         res.status(200).json(confirm);

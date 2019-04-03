@@ -17,12 +17,12 @@ module.exports = (passport, db) => {
   router.get('/data', ensureAuthenticated, AppController.getData);
   router.post('/newTask', ensureAuthenticated, AppController.newTask);
   router.post('/updateTask', ensureAuthenticated, AppController.updateTask);
-  router.post('/completeTask', ensureAuthenticated, AppController.completeTask);
+  router.post('/completeTask/:taskId', ensureAuthenticated, AppController.completeTask);
   router.get('/getTasks', ensureAuthenticated, AppController.getTasks);
-  router.delete('/deleteTask', ensureAuthenticated, AppController.deleteTask);
-  router.post('/purchaseSwag', ensureAuthenticated, AppController.purchaseSwag);
+  router.delete('/deleteTask/:taskId', ensureAuthenticated, AppController.deleteTask);
+  router.post('/purchaseSwag/:swagId', ensureAuthenticated, AppController.purchaseSwag);
   router.get('/getSwag', ensureAuthenticated, AppController.getSwag);
-  router.post('/updateAvatar', ensureAuthenticated, AppController.updateAvatar);
+  router.post('/updateAvatar/:type/:swagId', ensureAuthenticated, AppController.updateAvatar);
 
   return router;
 };
