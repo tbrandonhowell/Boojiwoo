@@ -8,10 +8,10 @@ module.exports = (db) => {
     email: 'j@g.co',
     password: process.env.ADMIN_USER_PWD,
     isAdmin: true,
-    avatarColor: 8,
-    avatarEyes: 10,
-    avatarMouth: 16,
-    avatarHat: 23,
+    avatarColor: '/assets/images/png/body-3.png',
+    avatarEyes: '/assets/images/png/eyes-4.png',
+    avatarMouth: '/assets/images/png/mouth-3.png',
+    avatarHat: '/assets/images/png/outfit-7.png',
     parentId: 1,
     points: 293870
   });
@@ -22,10 +22,10 @@ module.exports = (db) => {
     email: 'j@j.co',
     password: process.env.USER_PWD,
     isAdmin: false,
-    avatarColor: 1,
-    avatarEyes: 6,
-    avatarMouth: 12,
-    avatarHat: 19,
+    avatarColor: '/assets/images/png/body-0.png',
+    avatarEyes: '/assets/images/png/eyes-0.png',
+    avatarMouth: '/assets/images/png/mouth-0.png',
+    avatarHat: '/assets/images/png/outfit-0.png',
     points: 14
   });
 

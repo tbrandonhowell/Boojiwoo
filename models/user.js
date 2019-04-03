@@ -35,19 +35,19 @@ module.exports = function (sequelize, DataTypes) {
       defaultValue: 0
     },
     avatarColor: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       defaultValue: 0
     },
     avatarEyes: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       defaultValue: 0
     },
     avatarMouth: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       defaultValue: 0
     },
     avatarHat: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       defaultValue: 0
     },
     isAdmin: {

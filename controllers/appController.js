@@ -130,8 +130,7 @@ module.exports = function () {
       userId = req.session.passport.user.userId;
       cmd = req.params.cmd
       cmd = cmd[0].toLowerCase()
-      if (cmd === 'c') {
-        // color call
+      if (cmd === 'c') {        // color call
         db.User.update({
           avatarColor: req.body.avatarColor,
         }, {
@@ -141,26 +140,37 @@ module.exports = function () {
         }).then((confirm) => {
           res.status(200).json(confirm);
         });
-      } else if (cmd === 'e') {
-        // eye call
-      } else if (cmd === 'm') {
-        // mouth call
-      } else if (cmd === 'h') {
-        // hat/outfit call
+      } else if (cmd === 'e') { // eye call
+        db.User.update({
+          avatarEyes: req.body.avatarEyes,
+        }, {
+          where: {
+            userId: req.params.userId
+          }
+        }).then((confirm) => {
+          res.status(200).json(confirm);
+        });
+      } else if (cmd === 'm') { // mouth call
+        db.User.update({
+          avatarMouth: req.body.avatarMouth,
+        }, {
+          where: {
+            userId: req.params.userId
+          }
+        }).then((confirm) => {
+          res.status(200).json(confirm);
+        });
+      } else if (cmd === 'h') { // hat/outfit call
+        db.User.update({
+          avatarHat: req.body.avatarHat
+        }, {
+          where: {
+            userId: req.params.userId
+          }
+        }).then((confirm) => {
+          res.status(200).json(confirm);
+        });
       }
-
-      db.User.update({
-        avatarColor: req.body.avatarColor,
-        avatarEyes: req.body.avatarEyes,
-        avatarMouth: req.body.avatarMouth,
-        avatarHat: req.body.avatarHat
-      }, {
-        where: {
-          userId: req.session.passport.user.userId
-        }
-      }).then((confirm) => {
-        res.status(200).json(confirm);
-      });
     }
   };
 };
