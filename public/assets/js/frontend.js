@@ -55,12 +55,15 @@ window.onload = function () {
     event.preventDefault();
     console.log('HEY HOOMAN');
     let taskConfirmedName = $(this).text();
+    var affArray = ['You did it! Now dance like no one is watching!', 'Awesome! Everything you need to accomplish your goals is already in you!', 'Thank you for being a Rock Star!', 'Task Completed! Time to take over the world!', "Celebration! I'm so impressed. This kid's goin' places.", 'Victory! You are strong and capable!', "Let's have a round of Applause!", "I can't believe my eyes! It's nice to meet a Superhero like you!"]
+    var randomAffirmation = affArray[Math.floor(Math.random() * affArray.length)];
     console.log(taskConfirmedName);
     if (taskConfirmedName === 'None Yet') {
       // trigger sad modal
       $('#noneYetModal').modal().show();
     } else {
       // trigger happy modal
+      $('.modal-body').text(randomAffirmation);
       $('#taskModalLongTitle').text(taskConfirmedName);
       $('#taskModal').modal().show();
     }
