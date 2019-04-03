@@ -15,14 +15,14 @@ module.exports = (passport, db) => {
 
   // App
   router.get('/data', ensureAuthenticated, AppController.getData);
-  router.post('/newTask/:userId', ensureAuthenticated, AppController.newTask);
-  router.post('/updateTask/:userId', ensureAuthenticated, AppController.updateTask);
-  router.post('/completeTask/:userId/:taskId', ensureAuthenticated, AppController.completeTask);
-  router.get('/getTasks/:userId', ensureAuthenticated, AppController.getTasks);
+  router.post('/newTask', ensureAuthenticated, AppController.newTask);
+  router.post('/updateTask', ensureAuthenticated, AppController.updateTask);
+  router.post('/completeTask/:taskId', ensureAuthenticated, AppController.completeTask);
+  router.get('/getTasks', ensureAuthenticated, AppController.getTasks);
   router.delete('/deleteTask/:taskId', ensureAuthenticated, AppController.deleteTask);
-  router.post('/purchaseSwag/:userId/:swagId', ensureAuthenticated, AppController.purchaseSwag);
-  router.get('/getSwag/:userId', ensureAuthenticated, AppController.getSwag);
-  router.post('/updateAvatar/:userId/:type/:swagId', ensureAuthenticated, AppController.updateAvatar);
+  router.post('/purchaseSwag/:swagId', ensureAuthenticated, AppController.purchaseSwag);
+  router.get('/getSwag', ensureAuthenticated, AppController.getSwag);
+  router.post('/updateAvatar/:type/:swagId', ensureAuthenticated, AppController.updateAvatar);
 
   return router;
 };

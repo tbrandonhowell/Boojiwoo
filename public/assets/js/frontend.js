@@ -63,10 +63,10 @@ window.onload = function() {
             $('#noneYetModal').modal().show();
         } else {
             // update the DB
-            const userId = $(this).data('userId');
+            // const userId = $(this).data('userId'); // don't need this any longer
             const taskId = $(this).data('taskId');
             $.ajax({
-                url: "api/routes/completeTask/" + userId + "/" + taskId,
+                url: "api/routes/completeTask/" + taskId,
                 type: "post"
             }).then( function() {
                 // trigger happy modal
@@ -88,10 +88,10 @@ window.onload = function() {
         const userPoints = $(this).data('userPoints');
         const costPoints = $(this).data('costPoints');
         if (userPoints >= costPoints) {
-            const userId = $(this).data('userId'); // this might go away
+            // const userId = $(this).data('userId'); // this might go away
             const swagId = $(this).data('swagId');
             $.ajax({
-                url: "api/routes/purchaseSwag" + userId + "/" + swagId,
+                url: "api/routes/purchaseSwag/" + swagId,
                 type: "post"
             }).then( function() {
                 location.reload(); // reload the page
@@ -107,10 +107,10 @@ window.onload = function() {
         event.preventDefault();
         const swagType = $(this).data('swagType'); // this needed for API route build-out
         const fileName = $(this).data('fileName'); // this needed to update DOM avatar
-        const userId = $(this).data('userId'); // this might go away
+        // const userId = $(this).data('userId'); // this might go away
         const swagId = $(this).data('swagId'); // needed to update DB values
         $.ajax({
-            url: "api/routes/updateAvatar/" + userId + "/" + swagType + "/" + swagId,
+            url: "api/routes/updateAvatar/" + swagType + "/" + swagId,
             type: "post"
         }).then( function() {
             // mouth eyes outfit body << swagIDs
