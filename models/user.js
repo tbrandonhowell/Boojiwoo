@@ -2,20 +2,23 @@ const bcrypt = require('bcrypt');
 
 module.exports = function (sequelize, DataTypes) {
   let User = sequelize.define('User', {
-    userId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-    },
-    parentId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
+    // userId: {
+    //   type: DataTypes.INTEGER,
+    //   autoIncrement: true,
+    //   primaryKey: true
+    // },
+    // parentId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true
+    // },
     firstName: {
       type: DataTypes.STRING,
       allowNull: true
     },
-    userName: {
+    // userName: {
+    //   type: DataTypes.STRING
+    // },
+    lastName: {
       type: DataTypes.STRING
     },
     email: {
@@ -30,26 +33,26 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    points: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    avatarColor: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    avatarEyes: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    avatarMouth: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    avatarHat: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
+    // points: {
+    //   type: DataTypes.INTEGER,
+    //   defaultValue: 0
+    // },
+    // avatarColor: {
+    //   type: DataTypes.INTEGER,
+    //   defaultValue: 0
+    // },
+    // avatarEyes: {
+    //   type: DataTypes.INTEGER,
+    //   defaultValue: 0
+    // },
+    // avatarMouth: {
+    //   type: DataTypes.INTEGER,
+    //   defaultValue: 0
+    // },
+    // avatarHat: {
+    //   type: DataTypes.INTEGER,
+    //   defaultValue: 0
+    // },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       defaultValue: false

@@ -15,6 +15,14 @@ module.exports = (passport, db) => {
 
   // App
   router.get('/data', ensureAuthenticated, AppController.getData);
+  router.get('/email', (req, res) => {
+    console.log('ROUTE HIT');
+    // AppController.getEmailAddresses();
+    db.User.findAll({
+    }).then((results) => {
+      res.json(results);
+    });
+  });
 
   return router;
 };

@@ -1,3 +1,5 @@
+const db = require('../models');
+
 module.exports = function () {
   return {
     getData: (req, res) => {
