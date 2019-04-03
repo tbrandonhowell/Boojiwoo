@@ -1,18 +1,22 @@
-{{> nav/nav-block user=false register=true}}
+{{> nav/nav-block user register=true}}
 
 
 <div class="container">
   <header align="center" class="header-wrap">
-    <h1>View or update your user</h1>
+    {{!-- <h1>View or update your user</h1> --}}
   <div class="row mt-5">
       <div class="col-md-1">
           <!-- spacing -->
       </div>
-      <div class="col-md-5" id="logoDiv">
-          <img src="assets/images/png/boojiwoo-logo-export.png" id="logoimage" class="mb-3">
-      </div>
+        <div class="col-md-5 text-center" id="boojiDiv">
+            <h1 class="text-white">Upgrade Your Boojiwoo:</h1>
+
+            {{> avatar/avatar-image }}
+
+            <!-- <button type="submit" class="btn-lg btn-success whiteborder mb-3">Save Changes</button> -->
+        </div>
       <div class="col-md-5">
-          
+
           <div id="formDiv">
 
               <h1 class="text-white text-center mt-0">Update your Boojiwoo!</h1>
@@ -21,22 +25,22 @@
               <h3 id="update-err-msg" class="text-warning text-center"></h3>
 
               <form id= "create-form">
-                  <div class="form-group">
-                      <small><label for="inputUserName" class="col-form-label text-white font-weight-bold">Username:*</label></small>
-                      <input type="text" class="form-control" id="inputUserName" value="{{userInfo.userName}}">
-                  </div>
-                  <div class="form-group">
-                      <small><label for="inputPassword" class="col-form-label text-white font-weight-bold">Password:*</label></small>
-                      <input type="password" class="form-control" id="inputPassword" value="{{userInfo.password}}">
-                  </div>
-                  <div class="form-group">
+                    <div class="form-group"> <!-- First Name -->
                       <small><label for="inputFirst" class="col-form-label text-white font-weight-bold">First Name:</label></small>
-                      <input type="text" class="form-control" id="inputFirst" value="{{userInfo.firstName}}">
-                  </div>
-                  <div class="form-group">
+                      <input type="text" class="form-control" id="inputFirst" value="{{user.user.firstName}}">
+                    </div>
+                    <div class="form-group"> <!-- User Name -->
+                        <small><label for="inputUserName" class="col-form-label text-white font-weight-bold">Username:*</label></small>
+                        <input type="text" class="form-control" id="inputUserName" value="{{user.user.userName}}">
+                    </div>
+                    <div class="form-group"> <!-- Email -->
                       <small><label for="inputEmail" class="col-form-label text-white font-weight-bold">Email:</label></small>
-                      <input type="text" class="form-control" id="inputEmail" value="{{userInfo.email}}">
-                      </div>
+                      <input type="text" class="form-control" id="inputEmail" value="{{user.user.email}}">
+                    </div>
+                    <div class="form-group"> <!-- Password -->
+                        <small><label for="inputPassword" class="col-form-label text-white font-weight-bold">Password:*</label></small>
+                        <input type="password" class="form-control" id="inputPassword" value="">
+                    </div>
                   <button type="submit" class="btn btn-success btn-block whiteborder" id="update-user">Update</button>
               </form>
 
@@ -47,14 +51,9 @@
           <!-- spacing -->
       </div>
   </div>
-  <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 text-center">
-                <hr class="border-white">
-                <p class="text-white text-center"><a href="/profile" class="text-white underlink">Update My Account</a> | <a href="/logout" class="text-white underlink">Logout</a></p>
-        </div>
-        <div class="col-md-1"></div>
-    </div>
+
+    {{> nav/nav-footer }}
+
 </div> <!-- close container -->
 
 <!-- new stuff stops here -->
