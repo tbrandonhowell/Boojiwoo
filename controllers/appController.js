@@ -12,7 +12,7 @@ module.exports = function () {
     },
     newTask: (req, res) => {
       db.Tasks.create({
-        userId: req.params.userId,
+        userId: req.session.passport.user.userId,
         description: req.body.description
       }).then((confirm) => {
         res.status(200).json({ confirm: confirm });
@@ -34,7 +34,7 @@ module.exports = function () {
     },
     completeTask: (req, res) => {
       // get only userId and taskId - server should do everything else
-      const userId = req.params.userId;
+      const userId = req.session.passport.user.userId;
       const taskId = req.params.taskId;
 
       // get user points
@@ -79,7 +79,7 @@ module.exports = function () {
       // database call
       db.Tasks.findAll({
         where: {
-          userId: req.params.userId,
+          userId: req.session.passport.user.userId,
           dueNext: {
             $lt: tomorrow
           }
@@ -100,7 +100,7 @@ module.exports = function () {
     purchaseSwag: (req, res) => {
       // swagId & userId lines might not be right
       const swagId = req.params.swagId;
-      const userId = req.params.userId;
+      const userId = req.session.passport.user.userId;
       db.SwagOwned.create({
         swagId: swagId,
         userId: userId
@@ -119,7 +119,7 @@ module.exports = function () {
           model: db.SwagOwned,
           required: false,
           where: {
-            userId: req.params.userId
+            userId: req.session.passport.user.userId
           }
         }]
       }).then((confirm) => {
@@ -127,7 +127,7 @@ module.exports = function () {
       });
     },
     updateAvatar: (req, res) => {
-      userId = req.params.userId;
+      userId = req.session.passport.user.userId;
       cmd = req.params.cmd
       cmd = cmd[0].toLowerCase()
       if (cmd === 'c') {
@@ -136,7 +136,7 @@ module.exports = function () {
           avatarColor: req.body.avatarColor,
         }, {
           where: {
-            userId: req.params.userId
+            userId: req.session.passport.user.userId
           }
         }).then((confirm) => {
           res.status(200).json(confirm);
@@ -156,7 +156,7 @@ module.exports = function () {
         avatarHat: req.body.avatarHat
       }, {
         where: {
-          userId: req.params.userId
+          userId: req.session.passport.user.userId
         }
       }).then((confirm) => {
         res.status(200).json(confirm);
