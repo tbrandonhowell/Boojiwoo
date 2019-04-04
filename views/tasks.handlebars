@@ -1,57 +1,41 @@
-{{> nav/nav-block user register=true}}
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <h2 class="speech-bubble">Hi {{user.user.firstName}}! Have you completed any of these tasks today?</h1>
-        </div>
-        <div class="col-md-3"></div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h2 class="speech-bubble">Hi {{user.user.firstName}}! Have you completed any of these tasks today?</h1>
     </div>
-    <div class="row mt-5">
-        <div class="col-md-1">
-            <!-- spacing -->
-        </div>
-
-        <!--
-        Avatar display
-        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-        -->
-        <div class="col-md-5 text-center" id="boojiDiv">
-
-            {{> avatar/avatar-image }}
-
-            <button type="submit" class="btn-lg btn-primary whiteborder mb-3" onclick="location.assign('/upgrade')">Upgrade my Boojiwoo</button>
-        </div>
-
-
-        <!--
-        Task display
-        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-        -->
-        <div class="col-md-5" id="buttonDiv">
-            <form>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="0">{Task 1}</button>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="1">{Task 2}</button>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="2">{Task 3}</button>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="3">{Task 4}</button>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="4">{Task 5}</button>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="5">{Task 6}</button>
-                <button type="submit" class="btn-lg btn-danger btn-block whiteborder mb-3 task-button" data-task="none" id="none">None of these</button>
-            </form>
-        </div>
-
-        <!-- spacing -->
-        <div class="col-md-1">
-        </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row mt-5">
+    <!-- spacing -->
+    <div class="col-md-1"></div>
+    <!--
+    Avatar display
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                      -->
+    <div class="col-md-5 text-center" id="boojiDiv">
+      {{> avatar/avatar-image }}
+      <button type="submit" class="btn-lg btn-primary whiteborder mb-3" onclick="location.assign('/upgrade')">Upgrade my Boojiwoo</button>
     </div>
-    {{> nav/nav-footer }}
+    <!--
+    Task display
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                      -->
+    <div class="col-md-5" id="buttonDiv">
+      <form>
+        {{#each tasks}}
+          <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="{{taskId}}">{{description}}</button>
+        {{/each}}
+      </form>
+    </div>
+
+    <!-- spacing -->
+    <div class="col-md-1"></div>
+  </div>
+  {{> nav/nav-footer }}
 </div> <!-- close container -->
 
 <!--
 Modals
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
--->
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                          -->
 <!-- None yet Modal -->
 <div class="modal fade" id="noneYetModal" tabindex="-1" role="dialog" aria-labelledby="noneYetModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
