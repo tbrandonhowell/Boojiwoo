@@ -132,42 +132,46 @@ module.exports = function () {
       cmd = cmd[0].toLowerCase()
       if (cmd === 'c') {        // color call
         db.User.update({
-          avatarColor: req.body.avatarColor,
+          avatarColor: req.body.filePath // BH tweak
         }, {
           where: {
             userId: req.session.passport.user.userId
           }
         }).then((confirm) => {
+          req.session.passport.user.avatarColor = req.body.filePath; // BH addition
           res.status(200).json(confirm);
         });
       } else if (cmd === 'e') { // eye call
         db.User.update({
-          avatarEyes: req.body.avatarEyes,
+          avatarEyes: req.body.filePath, // BH tweak
         }, {
           where: {
             userId: req.params.userId
           }
         }).then((confirm) => {
+          req.session.passport.user.avatarEyes = req.body.filePath; // BH addition
           res.status(200).json(confirm);
         });
       } else if (cmd === 'm') { // mouth call
         db.User.update({
-          avatarMouth: req.body.avatarMouth,
+          avatarMouth: req.body.filePath, // BH tweak
         }, {
           where: {
             userId: req.params.userId
           }
         }).then((confirm) => {
+          req.session.passport.user.avatarMouth = req.body.filePath; // BH addition
           res.status(200).json(confirm);
         });
       } else if (cmd === 'h') { // hat/outfit call
         db.User.update({
-          avatarHat: req.body.avatarHat
+          avatarHat: req.body.filePath // BH tweak
         }, {
           where: {
             userId: req.params.userId
           }
         }).then((confirm) => {
+          req.session.passport.user.avatarHat = req.body.filePath; // BH addition
           res.status(200).json(confirm);
         });
       }

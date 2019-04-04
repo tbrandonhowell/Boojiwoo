@@ -64,18 +64,19 @@ window.onload = function() {
         } else {
             // update the DB
             // const userId = $(this).data('userId'); // don't need this any longer
-            const taskId = $(this).data('taskId');
+            const thisOne = $(this);
+            const taskId = $(this).data('task');
+            console.log("task = " + taskId);
+            // router.post('/completeTask/:taskId'
             $.ajax({
-                url: "api/routes/completeTask/" + taskId,
+                url: "api/completeTask/" + taskId,
                 type: "post"
             }).then( function() {
+                thisOne.hide();
                 // trigger happy modal
                 $("#taskModalLongTitle").text(taskConfirmedName);
                 $('#taskModal').modal().show();
-                $(this).remove();
                 $("#none").remove();
-                // $(this).remove();
-                // location.reload(); // reload the page
             })
             
         }
@@ -85,19 +86,28 @@ window.onload = function() {
     // capture the click on a purchase
     $(".buy-button").on("click", function (event) {
         event.preventDefault();
-        const userPoints = $(this).data('userPoints');
-        const costPoints = $(this).data('costPoints');
+        const userPoints = $(this).data('userpoints');
+        console.log({userPoints});
+        const costPoints = $(this).data('costpoints');
+        console.log({costPoints});
+        let difference = costPoints - userPoints;
+        console.log({difference});
+        $("#pointsNeeded").text(difference);
         if (userPoints >= costPoints) {
+            console.log("user can purchase");
             // const userId = $(this).data('userId'); // this might go away
-            const swagId = $(this).data('swagId');
+            const swagId = $(this).data('swagid');
+            console.log({swagId});
             $.ajax({
-                url: "api/routes/purchaseSwag/" + swagId,
+                url: "api/purchaseSwag/" + swagId,
                 type: "post"
             }).then( function() {
                 location.reload(); // reload the page
             })
         } else {
+            console.log("user can't purchase");
             // TODO: display a message that they need to earn X more points
+            $('#purchaseModal').modal().show();
         }
     });
 
@@ -105,14 +115,20 @@ window.onload = function() {
     // capture the click on an avatar update
     $(".update").on("click", function (event) {
         event.preventDefault();
-        const swagType = $(this).data('swagType'); // this needed for API route build-out
-        const fileName = $(this).data('fileName'); // this needed to update DOM avatar
+        const swagType = $(this).data('swag'); // this needed for API route build-out
+        console.log({swagType});
+        const fileName = $(this).data('file'); // this needed to update DOM avatar
+        console.log({fileName});
         // const userId = $(this).data('userId'); // this might go away
-        const swagId = $(this).data('swagId'); // needed to update DB values
+        // const swagId = $(this).data('swagId'); // needed to update DB values
         $.ajax({
-            url: "api/routes/updateAvatar/" + swagType + "/" + swagId,
-            type: "post"
+            url: "api/updateAvatar/" + swagType,
+            type: "post",
+            data: {
+                filePath: fileName
+            }
         }).then( function() {
+            console.log("success for DB push");
             // mouth eyes outfit body << swagIDs
             // new-eyes, etc outfit eyes mouth body
             if (swagType === "mouth") {
@@ -121,7 +137,7 @@ window.onload = function() {
                 $("#new-eyes").attr("src",fileName);
             } else if (swagType === "outfit") {
                 $("#new-outfit").attr("src",fileName);
-            } else if (swagType === "body") {
+            } else if (swagType === "c") { // is it a color(body)?
                 $("#new-body").attr("src",fileName);
             }
         });

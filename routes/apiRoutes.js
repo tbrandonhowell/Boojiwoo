@@ -22,7 +22,7 @@ module.exports = (passport, db) => {
   router.delete('/deleteTask/:taskId', ensureAuthenticated, AppController.deleteTask);
   router.post('/purchaseSwag/:swagId', ensureAuthenticated, AppController.purchaseSwag);
   router.get('/getSwag', ensureAuthenticated, AppController.getSwag);
-  router.post('/updateAvatar/:type/:swagId', ensureAuthenticated, AppController.updateAvatar);
+  router.post('/updateAvatar/:cmd', ensureAuthenticated, AppController.updateAvatar);
 
   return router;
 };
