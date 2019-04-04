@@ -38,24 +38,26 @@
             <div id="bodyCarousel" class="carousel slide" data-interval="false">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
+                        {{!-- const swagType = $(this).data('swagType'); // this needed for API route build-out --}} 
+                        {{!-- const fileName = $(this).data('fileName'); // this needed to update DOM avatar --}}
                         <img class="d-block w-100" src="assets/images/png/body-0-icon.png" alt="First slide">
-                        <button class="btn btn-success btn-block whiteborder mt-2">Add to Your Boojiwoo</button>
+                        <button class="btn btn-success btn-block whiteborder mt-2 update" data-swag="c" data-file="/assets/images/png/body-0.png">Add to Your Boojiwoo</button>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100" src="assets/images/png/body-1-icon.png" alt="Second slide">
-                        <button class="btn btn-success btn-block whiteborder mt-2">Add to Your Boojiwoo</button>
+                        <button class="btn btn-success btn-block whiteborder mt-2 update" data-swag="c" data-file="/assets/images/png/body-1.png">Add to Your Boojiwoo</button>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100" src="assets/images/png/body-2-icon.png" alt="Third slide">
-                        <button class="btn btn-success btn-block whiteborder mt-2">Add to Your Boojiwoo</button>
+                        <button class="btn btn-success btn-block whiteborder mt-2 update" data-swag="c" data-file="/assets/images/png/body-2.png">Add to Your Boojiwoo</button>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100" src="assets/images/png/body-3-icon.png" alt="Fourth slide">
-                        <button class="btn btn-secondary btn-block whiteborder mt-2">Earn more Woopoints to upgrade</button>
+                        <button class="btn btn-secondary btn-block whiteborder mt-2 buy-button" data-swagid="4" data-userpoints="15" data-costpoints="10">Buy this option for 10 points</button>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100" src="assets/images/png/body-4-icon.png" alt="Fifth slide">
-                        <button class="btn btn-secondary btn-block whiteborder mt-2">Earn more Woopoints to upgrade</button>
+                        <button class="btn btn-secondary btn-block whiteborder mt-2 buy-button" data-swagid="5" data-userpoints="15" data-costpoints="20">Buy this option for 20 points</button>
                     </div>
                 </div>
                 <a class="carousel-control-prev bodyClick" href="#bodyCarousel" role="button" data-slide="prev">
@@ -129,3 +131,23 @@
     -->
     {{> nav/nav-footer }}
 </div> <!-- close container -->
+
+<!-- Can't Purchase Modal -->
+<div class="modal fade" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="purchaseModalLongTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Sorry, but you'll need to earn <span id="pointsNeeded"></span> Woopoints for this upgrade.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
