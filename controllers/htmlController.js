@@ -155,7 +155,7 @@ module.exports = function () {
               canAfford: canUserAffordThis(s,user.user.points)
             }
             swag.push(item)
-            console.log(item)
+            // console.log(item)
           }
           res.render('store', {user: user, swag: swag});
         })
