@@ -1,3 +1,4 @@
+
 var allDone = function() {
     console.log("allDone fired");
     let buttonCheck = $('#buttonForm').html().trim();
@@ -25,16 +26,26 @@ window.onload = function () {
   console.log({logoHeight});
   let formHeight = $('#formDiv').height();
   console.log({formHeight});
+  console.log("test of new function:");
+  console.log(fixHeight(logoHeight,formHeight));
+  var heightFixes = fixHeight(logoHeight,formHeight);
+  console.log("^^ did that work?");
   if ($(window).width() > 767) {
     console.log("window is big enough");
-    if (logoHeight > formHeight) {
-      console.log("logo is larger");
-      let newTopMargin = (logoHeight - formHeight) / 2;
-      console.log({newTopMargin});
-      $('#formDiv').attr("style","margin-top: " + newTopMargin + "px");
-    } else {
-        // something;
+    if (heightFixes[0] === "right") {
+      $('#formDiv').attr("style","margin-top: " + heightFixes[1] + "px");
     }
+    if (heightFixes[0] === "left") {
+      $('#logoDiv').attr("style","margin-top: " + heightFixes[1] + "px");
+    }
+    // if (logoHeight > formHeight) {
+    //   console.log("logo is larger");
+    //   let newTopMargin = (logoHeight - formHeight) / 2;
+    //   console.log({newTopMargin});
+    //   $('#formDiv').attr("style","margin-top: " + newTopMargin + "px");
+    // } else {
+    //     // something;
+    // }
   }
 
 
@@ -108,11 +119,12 @@ window.onload = function () {
         url: "api/completeTask/" + taskId,
         type: "post"
       }).then( function() {
-        thisOne.hide();
+        thisOne.remove();
         // trigger happy modal
         $('.modal-body').text(randomAffirmation);
         $('#taskModalLongTitle').text(taskConfirmedName);
         $('#taskModal').modal().show();
+        allDone(); // update the message when all tasks have been completed
       })
     }
   });
