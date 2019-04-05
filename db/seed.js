@@ -22,10 +22,10 @@ module.exports = (db) => {
     email: 'j@j.co',
     password: process.env.USER_PWD,
     isAdmin: false,
-    avatarColor: '/assets/images/png/outfit-X.png',
+    avatarColor: '/assets/images/png/body-0.png',
     avatarEyes: '/assets/images/png/eyes-0.png',
     avatarMouth: '/assets/images/png/mouth-0.png',
-    avatarHat: '/assets/images/png/outfit-0.png',
+    avatarHat: '/assets/images/png/outfit-X.png',
     points: 15
   });
 
@@ -215,47 +215,7 @@ module.exports = (db) => {
     userId: 1,
   });
   db.SwagOwned.create({
-    swagId: 2,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 3,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 4,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 5,
-    userId: 1,
-  });
-  db.SwagOwned.create({
     swagId: 6,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 7,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 8,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 9,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 10,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 11,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 12,
     userId: 1,
   });
   db.SwagOwned.create({
@@ -263,43 +223,7 @@ module.exports = (db) => {
     userId: 1,
   });
   db.SwagOwned.create({
-    swagId: 14,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 15,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 16,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 17,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 18,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 19,
-    userId: 1,
-  });
-  db.SwagOwned.create({
     swagId: 20,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 21,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 22,
-    userId: 1,
-  });
-  db.SwagOwned.create({
-    swagId: 23,
     userId: 1,
   });
   db.SwagOwned.create({

@@ -42,13 +42,13 @@ module.exports = function () {
       db.User.findOne({
         where: { userId: userId }
       }).then((user) =>{
-        const userPoints = user.points;
+        const userPoints = parseInt(user.points);
         // get task data
         db.Tasks.findOne({
           where: { taskId: taskId }
         }).then((task) => {
           // update user points
-          const newPoints = userPoints + task.points;
+          const newPoints = userPoints + parseInt(task.points);
           db.User.update({
             points: newPoints
           }, {

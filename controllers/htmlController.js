@@ -79,6 +79,7 @@ module.exports = function () {
           user: req.user,
           isloggedin: req.isAuthenticated()
         };
+        //
         // get most recent user data
         db.User.findOne({
           where: {
@@ -88,83 +89,98 @@ module.exports = function () {
           user = {
             user: user
           }
-                  // get swag & return w/ owned(t/f) field
+          const userId = user.user.userId
+          //
+          // get all swag
           db.SwagStore.findAll({
-            attributes: [
-              'swagId', 'swagType', 'description', 'fileName', 'pointCost',
-              [db.sequelize.literal('CASE WHEN NULLIF(SwagOwned.userId,\'\') IS NULL THEN false ELSE true END'), 'owned']
-            ],
-            include: [{
-              model: db.SwagOwned,
-              required: false,
-              where: {
-                userId: user.user.userId
-              }
-            }]
           }).then((swagStore)=>{
             //
-            //  Function Farm
-            const isType = (i,type) => {
-              return i === type
-            }
-            const firstInstanceOfType = (i,list) => {
-              if (list.indexOf(i) === -1) {
-                list.push(i)
-                return true
-              } else {
-                return false
-              }
-            }
-            const canUserAffordThis = (s,points) => {
-              if (isOwned(s.owned) || s.pointCost > points) {
-                return false
-              } else {
-                return true
-              }
-            }
-            const isOwned = (i) => {
-              return i === 1
-            }
-            const getSmallIconFileName = (fileName) => {
-              fileName = fileName.split('.')
-              return fileName[0] + '-icon.' + fileName[1]
-            }
-            //  External Loop Variables
-            const foundTypes = []
+            // get rid of all the data we don't need
             const swag = []
-            //
-            //  Loop
-            //
             for (let i in swagStore) {
-              const s = swagStore[i].dataValues
-              console.log(swagStore[i])
-              const item = {
+              let s = swagStore[i].dataValues
+              let temp = {
                 swagId: s.swagId,
                 swagType: s.swagType,
                 description: s.description,
                 fileName: s.fileName,
-                pointCost: s.pointCost,
-                userPoints: user.user.points,
-                owned: isOwned(s.owned),
-                displayPath: getSmallIconFileName(s.fileName),
-                firstOfType: firstInstanceOfType(s.swagType,foundTypes),
-                isBody: isType(s.swagType,'body'),
-                isEyes: isType(s.swagType,'eyes'),
-                isMouth: isType(s.swagType,'mouth'),
-                isOutfit: isType(s.swagType,'outfit'),
-                canAfford: canUserAffordThis(s,user.user.points)
+                pointCost: parseInt(s.pointCost)
               }
-              swag.push(item)
-              console.log(item)
+              swag.push(temp)
             }
-          console.log('\n\n',user)
-          res.render('store', {user: user, swag: swag});
+            //
+            // get all transactions involving this user
+            db.SwagOwned.findAll({
+              where: {
+                userId: userId
+              }
+            }).then((trxn)=>{
+              //
+              //  Function Farm
+              const prepTransactions = (trxn) => {
+                let ownedSwag = []
+                for (let i in trxn) {
+                  let t = trxn[i].dataValues
+                  if (t.userId = userId) {
+                    ownedSwag.push(t.swagId)
+                  }
+                }
+                return ownedSwag
+              }
+              const isOwned = (id,list) => {
+                if (list.indexOf(id) === -1) {
+                  return false
+                } else {
+                  return true
+                }
+              }
+              const firstInstanceOfType = (i,list) => {
+                if (list.indexOf(i) === -1) {
+                  list.push(i)
+                  return true
+                } else {
+                  return false
+                }
+              }
+              const canUserAffordThis = (owned,cost) => {
+                if (!owned && points >= cost) {
+                  return true
+                } else {
+                  return false
+                }
+              }
+              const getSmallIconFileName = (fileName) => {
+                fileName = fileName.split('.')
+                return fileName[0] + '-icon.' + fileName[1]
+              }
+              const isType = (i,type) => {
+                return i === type
+              }
+              //
+              //  Loop
+              const ownedSwag = prepTransactions(trxn)
+              const foundTypes = []
+              const points = user.user.points
+              for (let i in swag) {
+                let s = swag[i]
+                s.userPoints = points
+                s.owned = isOwned(s.swagId,ownedSwag)
+                s.firstOfType = firstInstanceOfType(s.swagType,foundTypes)
+                s.displayPath = getSmallIconFileName(s.fileName)
+                s.isBody = isType(s.swagType,'body')
+                s.isEyes = isType(s.swagType,'eyes')
+                s.isMouth = isType(s.swagType,'mouth')
+                s.isOutfit = isType(s.swagType,'outfit')
+                s.canAfford = canUserAffordThis(s.owned,s.pointCost)
+              }
+              //  done
+              res.render('store', {user: user, swag: swag})
+            })
           })
         })
       } else {
         res.render('login');
       }
     }
-
   };
 };

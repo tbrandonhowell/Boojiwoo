@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       points: {
           type: DataTypes.INTEGER,
-          defaultValue: 10
+          defaultValue: 1
       }
     });
     return Tasks;
