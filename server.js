@@ -43,8 +43,7 @@ if (app.get('env') !== 'development') {
   });
 }
 
-db.sequelize.sync({ 
-  //force: process.env.FORCE_SYNC === 'true' 
+db.sequelize.sync({ force: process.env.FORCE_SYNC === 'true'
 }).then(() => {
   if (process.env.FORCE_SYNC === 'true') {
     require('./db/seed')(db);
@@ -87,7 +86,7 @@ console.log('DOUBLE CHECKING!!!!!!!!!! ', theemails);
 const mailOptions = {
   from: 'boojiwoo@gmail.com', // sender address
   to: theemails, // list of receivers
-  subject: 'Hit your goals today.', // Subject line
+  subject: 'Make today a great day.', // Subject line
   html: `<div class="email-background" style="background: #eee;padding: 10px;text-align: center;">
   <div class="pre-header" style="background: #eee;color: #666;font-size: 16px;">
 <!-- Boojiwoo wants you to have a great, productive day. -->
@@ -115,7 +114,7 @@ style="max-width: 500px;background: #00f078;font-family: sans-serif;margin: 0 au
 </div>`// plain text body
 };
 
-schedule.scheduleJob('0 37 21 * * *', function () {
+schedule.scheduleJob('0 36 22 * * *', function () {
   console.log('Node-Schedule is happening');
   transporter.sendMail(mailOptions, function (err, info) {
     console.log(err);
