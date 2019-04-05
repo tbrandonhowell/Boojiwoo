@@ -153,6 +153,12 @@ module.exports = (db) => {
   db.SwagStore.create({
     swagType: 'outfit',
     description: '',
+    fileName: '/assets/images/png/outfit-X.png',
+    pointCost: 1
+  });
+  db.SwagStore.create({
+    swagType: 'outfit',
+    description: '',
     fileName: '/assets/images/png/outfit-0.png',
     pointCost: 1
   });
@@ -198,6 +204,7 @@ module.exports = (db) => {
     fileName: '/assets/images/png/outfit-7.png',
     pointCost: 100
   });
+  
 
 
   /*
