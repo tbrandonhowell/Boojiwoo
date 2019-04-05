@@ -12,5 +12,6 @@ module.exports = (db) => {
   router.get('/register', HtmlController.register);
   router.get('/logout', HtmlController.logout);
 
+
   return router;
 };

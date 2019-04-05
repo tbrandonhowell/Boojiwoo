@@ -20,9 +20,10 @@ module.exports = (passport, db) => {
   router.post('/completeTask/:taskId', ensureAuthenticated, AppController.completeTask);
   router.get('/getTasks', ensureAuthenticated, AppController.getTasks);
   router.delete('/deleteTask/:taskId', ensureAuthenticated, AppController.deleteTask);
-  router.post('/purchaseSwag/:swagId', ensureAuthenticated, AppController.purchaseSwag);
   router.get('/getSwag', ensureAuthenticated, AppController.getSwag);
   router.post('/updateAvatar/:cmd', ensureAuthenticated, AppController.updateAvatar);
+  router.post('/purchaseSwag/:swagId', ensureAuthenticated, AppController.purchaseSwag);
+
 
   return router;
 };

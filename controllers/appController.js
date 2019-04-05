@@ -1,4 +1,5 @@
 const db = require('../models');
+const HtmlController = require('./htmlController')
 
 module.exports = function () {
   return {
@@ -97,18 +98,6 @@ module.exports = function () {
         res.status(200).json(confirm)
       });
     },
-    purchaseSwag: (req, res) => {
-      // swagId & userId lines might not be right
-      const swagId = req.params.swagId;
-      const userId = req.session.passport.user.userId;
-      db.SwagOwned.create({
-        swagId: swagId,
-        userId: userId
-      }).then((confirm) => {
-        // callback
-        res.status(200).json({ updated: true, confirm: confirm });
-      });
-    },
     getSwag: (req, res) => {
       db.SwagStore.findAll({
         attributes: [
@@ -178,6 +167,43 @@ module.exports = function () {
           res.status(200).json(confirm);
         });
       }
-    }
+    },
+    purchaseSwag: function (req, res) {
+      // swagId & userId lines might not be right
+      const swagId = req.params.swagId;
+      const userId = req.session.passport.user.userId;
+      db.SwagOwned.create({
+        swagId: swagId,
+        userId: userId
+      }).then((confirm) => {
+        // callback
+        db.SwagStore.findOne({
+          where: {swagId: swagId}
+        }).then((swag)=>{
+          const cost = swag.pointCost
+          db.User.findOne({
+            where: {userId: userId}
+          }).then((user)=>{
+            const updatedPoints = user.points - cost
+            db.User.update({
+              points: updatedPoints
+            }, {
+              where: {
+                userId: userId
+              }
+            }).then((confirm)=>{
+              // req.session.passport.user.points = updatedPoints
+              db.User.findOne({
+                where: {
+                  userId: userId
+                }
+              }).then((user)=>{
+                res.status(200).json(user)
+              })
+            })
+          })
+        })
+      });
+    },
   };
 };
