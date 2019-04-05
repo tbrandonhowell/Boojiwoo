@@ -20,7 +20,7 @@
     Task display
     ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                      -->
     <div class="col-md-5" id="buttonDiv">
-      <form>
+      <form id="buttonForm">
         {{#each tasks}}
           <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="{{taskId}}">{{description}}</button>
         {{/each}}
@@ -74,3 +74,6 @@ Modals
     </div>
   </div>
 </div>
+<script>
+  allDone();
+</script>

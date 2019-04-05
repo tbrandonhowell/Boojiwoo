@@ -1,5 +1,22 @@
+var allDone = function() {
+    console.log("allDone fired");
+    let buttonCheck = $('#buttonForm').html().trim();
+    console.log({buttonCheck});
+    if (buttonCheck === ""){
+        console.log("#buttonForm is empty");
+        $('#buttonForm').html(
+            `<img src="assets/images/png/thumbs-up.png" class="img-fluid">`
+        )
+        $('.speech-bubble').text(
+            "Great job completing your tasks today! Keep it up!"
+        )
+    }
+    
+}
+
 window.onload = function () {
   console.log('frontend.js is loaded');
+
 
   // ================================================
   // HOMEPAGE DIV FIX
@@ -19,6 +36,7 @@ window.onload = function () {
         // something;
     }
   }
+
 
   // homepage time of day
   var hours = new Date().getHours();
@@ -99,6 +117,7 @@ window.onload = function () {
     }
   });
 
+
     //  router.post('/purchaseSwag/:userId/:swagId', ensureAuthenticated, AppController.purchaseSwag);
     // capture the click on a purchase
   $(".buy-button").on("click", function (event) {
@@ -177,4 +196,5 @@ $(".not-yet").on("click", function (event) {
   let boojHeight = $('#buildOutfit').height();
   console.log({ boojHeight });
   $('#buildImage').attr('style', 'height: ' + boojHeight + 'px');
+
 };
