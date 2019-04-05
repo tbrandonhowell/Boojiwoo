@@ -43,13 +43,13 @@ module.exports = (db) => {
     swagType: 'body',
     description: '',
     fileName: '/assets/images/png/body-1.png',
-    pointCost: 10
+    pointCost: 5
   });
   db.SwagStore.create({
     swagType: 'body',
     description: '',
     fileName: '/assets/images/png/body-2.png',
-    pointCost: 20
+    pointCost: 10
   });
   db.SwagStore.create({
     swagType: 'body',
@@ -74,13 +74,13 @@ module.exports = (db) => {
     swagType: 'eyes',
     description: '',
     fileName: '/assets/images/png/eyes-1.png',
-    pointCost: 10
+    pointCost: 5
   });
   db.SwagStore.create({
     swagType: 'eyes',
     description: '',
     fileName: '/assets/images/png/eyes-2.png',
-    pointCost: 20
+    pointCost: 10
   });
   db.SwagStore.create({
     swagType: 'eyes',
@@ -117,13 +117,13 @@ module.exports = (db) => {
     swagType: 'mouth',
     description: '',
     fileName: '/assets/images/png/mouth-1.png',
-    pointCost: 10
+    pointCost: 5
   });
   db.SwagStore.create({
     swagType: 'mouth',
     description: '',
     fileName: '/assets/images/png/mouth-2.png',
-    pointCost: 20
+    pointCost: 10
   });
   db.SwagStore.create({
     swagType: 'mouth',
@@ -160,19 +160,19 @@ module.exports = (db) => {
     swagType: 'outfit',
     description: '',
     fileName: '/assets/images/png/outfit-1.png',
-    pointCost: 10
+    pointCost: 5
   });
   db.SwagStore.create({
     swagType: 'outfit',
     description: '',
     fileName: '/assets/images/png/outfit-2.png',
-    pointCost: 20
+    pointCost: 10
   });
   db.SwagStore.create({
     swagType: 'outfit',
     description: '',
     fileName: '/assets/images/png/outfit-3.png',
-    pointCost: 30
+    pointCost: 20
   });
   db.SwagStore.create({
     swagType: 'outfit',
@@ -184,13 +184,13 @@ module.exports = (db) => {
     swagType: 'outfit',
     description: '',
     fileName: '/assets/images/png/outfit-5.png',
-    pointCost: 50
+    pointCost: 60
   });
   db.SwagStore.create({
     swagType: 'outfit',
     description: '',
     fileName: '/assets/images/png/outfit-6.png',
-    pointCost: 60
+    pointCost: 80
   });
   db.SwagStore.create({
     swagType: 'outfit',

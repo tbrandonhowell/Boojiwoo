@@ -6,7 +6,7 @@
           <!-- spacing -->
       </div>
         <div class="col-md-5 text-center" id="boojiDiv">
-            <h1 class="text-white">Upgrade Your Boojiwoo:</h1>
+            <h1 class="text-white"></h1>
 
             {{> avatar/avatar-image }}
 
@@ -16,7 +16,7 @@
 
           <div id="formDiv">
 
-              <h1 class="text-white text-center mt-0">Update your Boojiwoo!</h1>
+              <h1 class="text-white text-center mt-0">Update your Account</h1>
 
               {{!-- All of these fields were present in Alper's example --}}
               <h3 id="update-err-msg" class="text-warning text-center"></h3>
@@ -38,7 +38,7 @@
                         <small><label for="inputPassword" class="col-form-label text-white font-weight-bold">Password:*</label></small>
                         <input type="password" class="form-control" id="inputPassword" value="">
                     </div>
-                  <button type="submit" class="btn btn-success btn-block whiteborder" id="update-user">Update</button>
+                  <button type="submit" class="btn btn-success btn-block whiteborder" id="update-user" data-userId="{{user.user.userId}}">Update</button>
               </form>
 
               <p class="text-white text-center mt-3"><a href="/" class="text-white underlink">Cancel and return to homepage.</a></p>
