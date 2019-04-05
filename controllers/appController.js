@@ -131,6 +131,7 @@ module.exports = function () {
       cmd = req.params.cmd
       cmd = cmd[0].toLowerCase()
       if (cmd === 'b') {        // body call
+
         db.User.update({
           avatarColor: req.body.filePath // BH tweak
         }, {
@@ -142,11 +143,12 @@ module.exports = function () {
           res.status(200).json(confirm);
         });
       } else if (cmd === 'e') { // eye call
+        console.log("\n\n\ncaught a eye post\n\n\n");
         db.User.update({
           avatarEyes: req.body.filePath, // BH tweak
         }, {
           where: {
-            userId: req.params.userId
+            userId: req.session.passport.user.userId
           }
         }).then((confirm) => {
           req.session.passport.user.avatarEyes = req.body.filePath; // BH addition
@@ -157,18 +159,19 @@ module.exports = function () {
           avatarMouth: req.body.filePath, // BH tweak
         }, {
           where: {
-            userId: req.params.userId
+            userId: req.session.passport.user.userId
           }
         }).then((confirm) => {
           req.session.passport.user.avatarMouth = req.body.filePath; // BH addition
           res.status(200).json(confirm);
         });
       } else if (cmd === 'o') { // outfit call
+
         db.User.update({
           avatarHat: req.body.filePath // BH tweak
         }, {
           where: {
-            userId: req.params.userId
+            userId: req.session.passport.user.userId
           }
         }).then((confirm) => {
           req.session.passport.user.avatarHat = req.body.filePath; // BH addition

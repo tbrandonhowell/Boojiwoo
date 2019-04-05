@@ -2,7 +2,8 @@ window.onload = function() {
 
     console.log("frontend.js is loaded");
 
-    // homepage div fix
+    // ================================================
+    // HOMEPAGE DIV FIX
     // THIS SHOULD REALLY BE FUNCTIONIZED TO WORK IN BOTH DIRECTIONS
     let logoHeight = $('#logoDiv').height();
     console.log({logoHeight});
@@ -93,31 +94,42 @@ window.onload = function() {
         let difference = costPoints - userPoints;
         console.log({difference});
         $("#pointsNeeded").text(difference);
-        if (userPoints >= costPoints) {
-            console.log("user can purchase");
-            // const userId = $(this).data('userId'); // this might go away
-            const swagId = $(this).data('swagid');
-            console.log({swagId});
-            $.ajax({
-                url: "api/purchaseSwag/" + swagId,
-                type: "post"
-            }).then( function() {
-                location.reload(); // reload the page
-            })
-        } else {
+        const swagId = $(this).data('swagid');
+        console.log({swagId});
+        $.ajax({
+            url: "api/purchaseSwag/" + swagId,
+            type: "post"
+        }).then( function() {
+            location.reload(); // reload the page
+        });
+    });
+
+
+
+// capture the click on a not yet
+$(".not-yet").on("click", function (event) {
+        event.preventDefault();
+        const userPoints = $(this).data('userpoints');
+        console.log({userPoints});
+        const costPoints = $(this).data('costpoints');
+        console.log({costPoints});
+        let difference = costPoints - userPoints;
+        console.log({difference});
+        $("#pointsNeeded").text(difference);
             console.log("user can't purchase");
             // TODO: display a message that they need to earn X more points
             $('#purchaseModal').modal().show();
-        }
     });
+
 
     //  router.post('/updateAvatar/:userId/:type/:swagId', ensureAuthenticated, AppController.updateAvatar);
     // capture the click on an avatar update
-    $(".update").on("click", function (event) {
+    $(".upgrade").on("click", function (event) {
         event.preventDefault();
-        const swagType = $(this).data('swag'); // this needed for API route build-out
+        console.log("Update click captured");
+        const swagType = $(this).data('swagtype'); // this needed for API route build-out
         console.log({swagType});
-        const fileName = $(this).data('file'); // this needed to update DOM avatar
+        const fileName = $(this).data('filename'); // this needed to update DOM avatar
         console.log({fileName});
         // const userId = $(this).data('userId'); // this might go away
         // const swagId = $(this).data('swagId'); // needed to update DB values
@@ -137,7 +149,7 @@ window.onload = function() {
                 $("#new-eyes").attr("src",fileName);
             } else if (swagType === "outfit") {
                 $("#new-outfit").attr("src",fileName);
-            } else if (swagType === "c") { // is it a color(body)?
+            } else if (swagType === "body") { // is it a color(body)?
                 $("#new-body").attr("src",fileName);
             }
         });
