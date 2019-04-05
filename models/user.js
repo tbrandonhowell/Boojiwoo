@@ -51,7 +51,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     avatarHat: {
       type: DataTypes.STRING,
-      defaultValue: '/assets/images/png/outfit-0.png'
+      defaultValue: '/assets/images/png/outfit-X.png'
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
