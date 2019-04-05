@@ -1,6 +1,5 @@
-window.onload = function() {
-
-    console.log("frontend.js is loaded");
+window.onload = function () {
+  console.log('frontend.js is loaded');
 
     // ================================================
     // HOMEPAGE DIV FIX
@@ -32,12 +31,28 @@ window.onload = function() {
         $("#dayTime").text("afternoon");
         console.log("It's afternoon");
     } else {
-        // morning
-        $("#dayTime").text("morning");
-        console.log("It's morning");
+      // something;
     }
+  }
 
-    $(".bodyClick").on("click", function () {
+  // homepage time of day
+  var hours = new Date().getHours();
+  if (hours > 17) {
+    // evening
+    $('#dayTime').text('evening');
+    console.log("It's evening");
+  } else if (hours > 12) {
+    // afternoon
+    $('#dayTime').text('afternoon');
+    console.log("It's afternoon");
+  } else {
+    // morning
+    $('#dayTime').text('morning');
+    console.log("It's morning");
+  }
+
+
+  $('.bodyClick').on('click', function () {
 
         if ( $("#body0").hasClass("active") ) {
             console.log("body0 is active");
@@ -57,7 +72,10 @@ window.onload = function() {
     // capture clicks on task buttons
     $(".task-button").on("click", function (event) {
         event.preventDefault();
-        let taskConfirmedName = $(this).text();
+      console.log('HEY HOOMAN');
+      let taskConfirmedName = $(this).text();
+      var affArray = ['You did it! Now dance like no one is watching!', 'Awesome! Everything you need to accomplish your goals is already in you!', 'Thank you for being a Rock Star!', 'Task Completed! Time to take over the world!', "Celebration! I'm so impressed. This kid's goin' places.", 'Victory! You are strong and capable!', "Let's have a round of Applause!", "I can't believe my eyes! It's nice to meet a Superhero like you!"]
+      var randomAffirmation = affArray[Math.floor(Math.random() * affArray.length)];
         console.log(taskConfirmedName);
         if (taskConfirmedName === "None Yet") {
             // trigger sad modal
@@ -75,9 +93,9 @@ window.onload = function() {
             }).then( function() {
                 thisOne.hide();
                 // trigger happy modal
-                $("#taskModalLongTitle").text(taskConfirmedName);
+                $('.modal-body').text(randomAffirmation);
+                $('#taskModalLongTitle').text(taskConfirmedName);
                 $('#taskModal').modal().show();
-                $("#none").remove();
             })
             
         }
@@ -156,8 +174,9 @@ $(".not-yet").on("click", function (event) {
     })
 
 
-    // boojiwoo clearfix but w/ js
-    let boojHeight = $('#buildOutfit').height();
-    console.log({boojHeight});
-    $('#buildImage').attr('style','height: ' + boojHeight + 'px');
+
+  // boojiwoo clearfix but w/ js
+  let boojHeight = $('#buildOutfit').height();
+  console.log({ boojHeight });
+  $('#buildImage').attr('style', 'height: ' + boojHeight + 'px');
 };
