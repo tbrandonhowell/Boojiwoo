@@ -33,26 +33,26 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    // points: {
-    //   type: DataTypes.INTEGER,
-    //   defaultValue: 0
-    // },
-    // avatarColor: {
-    //   type: DataTypes.INTEGER,
-    //   defaultValue: 0
-    // },
-    // avatarEyes: {
-    //   type: DataTypes.INTEGER,
-    //   defaultValue: 0
-    // },
-    // avatarMouth: {
-    //   type: DataTypes.INTEGER,
-    //   defaultValue: 0
-    // },
-    // avatarHat: {
-    //   type: DataTypes.INTEGER,
-    //   defaultValue: 0
-    // },
+    points: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    avatarColor: {
+      type: DataTypes.STRING,
+      defaultValue: '/assets/images/png/body-0.png'
+    },
+    avatarEyes: {
+      type: DataTypes.STRING,
+      defaultValue: '/assets/images/png/eyes-0.png'
+    },
+    avatarMouth: {
+      type: DataTypes.STRING,
+      defaultValue: '/assets/images/png/mouth-0.png'
+    },
+    avatarHat: {
+      type: DataTypes.STRING,
+      defaultValue: '/assets/images/png/outfit-0.png'
+    },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
@@ -95,6 +95,5 @@ module.exports = function (sequelize, DataTypes) {
     delete values.password;
     return values;
   };
-
   return User;
 };

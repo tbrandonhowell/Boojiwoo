@@ -2,7 +2,8 @@ window.onload = function() {
 
     console.log("frontend.js is loaded");
 
-    // homepage div fix
+    // ================================================
+    // HOMEPAGE DIV FIX
     // THIS SHOULD REALLY BE FUNCTIONIZED TO WORK IN BOTH DIRECTIONS
     let logoHeight = $('#logoDiv').height();
     console.log({logoHeight});
@@ -62,13 +63,97 @@ window.onload = function() {
             // trigger sad modal
             $('#noneYetModal').modal().show();
         } else {
-            // trigger happy modal
-            $("#taskModalLongTitle").text(taskConfirmedName);
-            $('#taskModal').modal().show();
+            // update the DB
+            // const userId = $(this).data('userId'); // don't need this any longer
+            const thisOne = $(this);
+            const taskId = $(this).data('task');
+            console.log("task = " + taskId);
+            // router.post('/completeTask/:taskId'
+            $.ajax({
+                url: "api/completeTask/" + taskId,
+                type: "post"
+            }).then( function() {
+                thisOne.hide();
+                // trigger happy modal
+                $("#taskModalLongTitle").text(taskConfirmedName);
+                $('#taskModal').modal().show();
+                $("#none").remove();
+            })
+            
         }
-        // trigger div w/ task info in it using variable
-        // ajax call to DB to mark task as complete
     });
+
+    //  router.post('/purchaseSwag/:userId/:swagId', ensureAuthenticated, AppController.purchaseSwag);
+    // capture the click on a purchase
+    $(".buy-button").on("click", function (event) {
+        event.preventDefault();
+        const userPoints = $(this).data('userpoints');
+        console.log({userPoints});
+        const costPoints = $(this).data('costpoints');
+        console.log({costPoints});
+        let difference = costPoints - userPoints;
+        console.log({difference});
+        $("#pointsNeeded").text(difference);
+        const swagId = $(this).data('swagid');
+        console.log({swagId});
+        $.ajax({
+            url: "api/purchaseSwag/" + swagId,
+            type: "post"
+        }).then( function() {
+            location.reload(); // reload the page
+        });
+    });
+
+
+
+// capture the click on a not yet
+$(".not-yet").on("click", function (event) {
+        event.preventDefault();
+        const userPoints = $(this).data('userpoints');
+        console.log({userPoints});
+        const costPoints = $(this).data('costpoints');
+        console.log({costPoints});
+        let difference = costPoints - userPoints;
+        console.log({difference});
+        $("#pointsNeeded").text(difference);
+            console.log("user can't purchase");
+            // TODO: display a message that they need to earn X more points
+            $('#expenseModal').modal().show();
+    });
+
+
+    //  router.post('/updateAvatar/:userId/:type/:swagId', ensureAuthenticated, AppController.updateAvatar);
+    // capture the click on an avatar update
+    $(".upgrade").on("click", function (event) {
+        event.preventDefault();
+        console.log("Update click captured");
+        const swagType = $(this).data('swagtype'); // this needed for API route build-out
+        console.log({swagType});
+        const fileName = $(this).data('filename'); // this needed to update DOM avatar
+        console.log({fileName});
+        // const userId = $(this).data('userId'); // this might go away
+        // const swagId = $(this).data('swagId'); // needed to update DB values
+        $.ajax({
+            url: "api/updateAvatar/" + swagType,
+            type: "post",
+            data: {
+                filePath: fileName
+            }
+        }).then( function() {
+            console.log("success for DB push");
+            // mouth eyes outfit body << swagIDs
+            // new-eyes, etc outfit eyes mouth body
+            if (swagType === "mouth") {
+                $("#new-mouth").attr("src",fileName);
+            } else if (swagType === "eyes") {
+                $("#new-eyes").attr("src",fileName);
+            } else if (swagType === "outfit") {
+                $("#new-outfit").attr("src",fileName);
+            } else if (swagType === "body") { // is it a color(body)?
+                $("#new-body").attr("src",fileName);
+            }
+        });
+    })
 
 
     // boojiwoo clearfix but w/ js

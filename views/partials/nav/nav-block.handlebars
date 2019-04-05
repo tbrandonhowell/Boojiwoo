@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <!-- Brand/logo -->
   <a class="navbar-brand" href="/">
-    AppName
+    Boojiwoo
   </a>
-  
+
   <!-- Links -->
   <ul class="nav navbar-nav ml-auto">
 
@@ -12,6 +12,12 @@
     </li> --}}
 
     {{#if isloggedin}}
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/upgrade">Store</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="/profile">My Profile</a>
       </li>
@@ -28,5 +34,6 @@
     {{/if}}
   </ul>
 </nav>
+<br><br>
 
 {{!-- {{> modal/login-block}} --}}

@@ -15,14 +15,14 @@ module.exports = (passport, db) => {
 
   // App
   router.get('/data', ensureAuthenticated, AppController.getData);
-  router.get('/email', (req, res) => {
-    console.log('ROUTE HIT');
-    // AppController.getEmailAddresses();
-    db.User.findAll({
-    }).then((results) => {
-      res.json(results);
-    });
-  });
+  router.post('/newTask', ensureAuthenticated, AppController.newTask);
+  router.post('/updateTask', ensureAuthenticated, AppController.updateTask);
+  router.post('/completeTask/:taskId', ensureAuthenticated, AppController.completeTask);
+  router.get('/getTasks', ensureAuthenticated, AppController.getTasks);
+  router.delete('/deleteTask/:taskId', ensureAuthenticated, AppController.deleteTask);
+  router.post('/purchaseSwag/:swagId', ensureAuthenticated, AppController.purchaseSwag);
+  router.get('/getSwag', ensureAuthenticated, AppController.getSwag);
+  router.post('/updateAvatar/:cmd', ensureAuthenticated, AppController.updateAvatar);
 
   return router;
 };

@@ -1,60 +1,41 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <h2 class="speech-bubble">Hi {{user.firstName}}! Have you completed any of these tasks today?</h1>
-        </div>
-        <div class="col-md-3"></div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h2 class="speech-bubble">Hi {{user.user.firstName}}! Have you completed any of these tasks today?</h1>
     </div>
-    <div class="row mt-5">
-        <div class="col-md-1">
-            <!-- spacing -->
-        </div>
-        <div class="col-md-5 text-center" id="boojiDiv">
-            <div id="buildImage">
-                <div id="buildOutfit">
-                    <img src="assets/images/png/outfit-3.png" class="img-fluid mb-3">
-                </div>
-                <div id="buildEyes">
-                    <img src="assets/images/png/eyes-2.png" class="img-fluid mb-3">
-                </div>
-                <div id="buildMouth">
-                    <img src="assets/images/png/mouth-3.png" class="img-fluid mb-3">
-                </div>
-                <div id="buildBody">
-                    <img src="assets/images/png/body-3.png" class="img-fluid mb-3">
-                </div>
-            </div>
-            <button type="submit" class="btn-lg btn-primary whiteborder mb-3">Update my Boojiwoo</button>
-        </div>
-        <div class="col-md-5" id="buttonDiv">
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row mt-5">
+    <!-- spacing -->
+    <div class="col-md-1"></div>
+    <!--
+    Avatar display
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                      -->
+    <div class="col-md-5 text-center" id="boojiDiv">
+      {{> avatar/avatar-image }}
+      <button type="submit" class="btn-lg btn-primary whiteborder mb-3" onclick="location.assign('/upgrade')">Upgrade my Boojiwoo</button>
+    </div>
+    <!--
+    Task display
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                      -->
+    <div class="col-md-5" id="buttonDiv">
+      <form>
+        {{#each tasks}}
+          <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="{{taskId}}">{{description}}</button>
+        {{/each}}
+      </form>
+    </div>
 
-            <form>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="0">{Task 1}</button>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="1">{Task 2}</button>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="2">{Task 3}</button>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="3">{Task 4}</button>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="4">{Task 5}</button>
-                <button type="submit" class="btn-lg btn-success btn-block whiteborder mb-3 task-button" data-task="5">{Task 6}</button>
-                <button type="submit" class="btn-lg btn-danger btn-block whiteborder mb-3 task-button" data-task="none">None Yet</button>
-            </form>
-
-        </div>
-        <div class="col-md-1">
-            <!-- spacing -->
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 text-center">
-                <hr class="border-white">
-                <p class="text-white text-center"><a href="#" class="text-white underlink">Update My Account</a></p>
-        </div>
-        <div class="col-md-1"></div>
-    </div>
+    <!-- spacing -->
+    <div class="col-md-1"></div>
+  </div>
+  {{> nav/nav-footer }}
 </div> <!-- close container -->
 
-
+<!--
+Modals
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                          -->
 <!-- None yet Modal -->
 <div class="modal fade" id="noneYetModal" tabindex="-1" role="dialog" aria-labelledby="noneYetModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -74,7 +55,6 @@
     </div>
   </div>
 </div>
-
 <!-- Task Acknowledgement Modal -->
 <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
