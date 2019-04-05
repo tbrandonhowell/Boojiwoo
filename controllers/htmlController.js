@@ -79,94 +79,86 @@ module.exports = function () {
           user: req.user,
           isloggedin: req.isAuthenticated()
         };
-        // get swag & return w/ owned(t/f) field
-        db.SwagStore.findAll({
-          attributes: [
-            'swagId', 'swagType', 'description', 'fileName', 'pointCost',
-            [db.sequelize.literal('CASE WHEN NULLIF(swagOwneds.userId,\'\') IS NULL THEN false ELSE true END'), 'owned']
-          ],
-          include: [{
-            model: db.SwagOwned,
-            required: false,
-            where: {
-              userId: user.user.userId
+        // get most recent user data
+        db.User.findOne({
+          where: {
+            userId: user.user.userId
+          }
+        }).then((user)=>{
+          user = {
+            user: user
+          }
+                  // get swag & return w/ owned(t/f) field
+          db.SwagStore.findAll({
+            attributes: [
+              'swagId', 'swagType', 'description', 'fileName', 'pointCost',
+              [db.sequelize.literal('CASE WHEN NULLIF(swagOwneds.userId,\'\') IS NULL THEN false ELSE true END'), 'owned']
+            ],
+            include: [{
+              model: db.SwagOwned,
+              required: false,
+              where: {
+                userId: user.user.userId
+              }
+            }]
+          }).then((swagStore)=>{
+            //
+            //  Function Farm
+            const isType = (i,type) => {
+              return i === type
             }
-          }]
-        }).then((swagStore)=>{
-
-          /*
-              Start Returned Data
-              ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
-          */
-
-          //
-          //  Function Farm
-          //
-          const isType = (i,type) => {
-            return i === type
-          }
-          const firstInstanceOfType = (i,list) => {
-            if (list.indexOf(i) === -1) {
-              list.push(i)
-              return true
-            } else {
-              return false
+            const firstInstanceOfType = (i,list) => {
+              if (list.indexOf(i) === -1) {
+                list.push(i)
+                return true
+              } else {
+                return false
+              }
             }
-          }
-          const canUserAffordThis = (s,points) => {
-            if (isOwned(s.owned) || s.pointCost > points) {
-              return false
-            } else {
-              return true
+            const canUserAffordThis = (s,points) => {
+              if (isOwned(s.owned) || s.pointCost > points) {
+                return false
+              } else {
+                return true
+              }
             }
-          }
-          const isOwned = (i) => {
-            return i === 1
-          }
-          const getSmallIconFileName = (fileName) => {
-            fileName = fileName.split('.')
-            return fileName[0] + '-icon.' + fileName[1]
-          }
-          //
-          //  External Loop Variables
-          //
-          const foundTypes = []
-          const swag = []
-
-          //
-          //  Loop
-          //
-          for (let i in swagStore) {
-            const s = swagStore[i].dataValues
-            const item = {
-              swagId: s.swagId,
-              swagType: s.swagType,
-              description: s.description,
-              fileName: s.fileName,
-              pointCost: s.pointCost,
-              userPoints: user.user.points,
-              owned: isOwned(s.owned),
-              displayPath: getSmallIconFileName(s.fileName),
-              firstOfType: firstInstanceOfType(s.swagType,foundTypes),
-              isBody: isType(s.swagType,'body'),
-              isEyes: isType(s.swagType,'eyes'),
-              isMouth: isType(s.swagType,'mouth'),
-              isOutfit: isType(s.swagType,'outfit'),
-              canAfford: canUserAffordThis(s,user.user.points)
+            const isOwned = (i) => {
+              return i === 1
             }
-            swag.push(item)
-          }
+            const getSmallIconFileName = (fileName) => {
+              fileName = fileName.split('.')
+              return fileName[0] + '-icon.' + fileName[1]
+            }
+            //  External Loop Variables
+            const foundTypes = []
+            const swag = []
+            //
+            //  Loop
+            //
+            for (let i in swagStore) {
+              const s = swagStore[i].dataValues
+              console.log(swagStore[i])
+              const item = {
+                swagId: s.swagId,
+                swagType: s.swagType,
+                description: s.description,
+                fileName: s.fileName,
+                pointCost: s.pointCost,
+                userPoints: user.user.points,
+                owned: isOwned(s.owned),
+                displayPath: getSmallIconFileName(s.fileName),
+                firstOfType: firstInstanceOfType(s.swagType,foundTypes),
+                isBody: isType(s.swagType,'body'),
+                isEyes: isType(s.swagType,'eyes'),
+                isMouth: isType(s.swagType,'mouth'),
+                isOutfit: isType(s.swagType,'outfit'),
+                canAfford: canUserAffordThis(s,user.user.points)
+              }
+              swag.push(item)
+              console.log(item)
+            }
           console.log('\n\n',user)
-          db.User.findOne({
-            where: {
-              userId: user.user.userId
-            }
-          }).then((user)=>{
-            user = {
-              user: user
-            }
-            console.log('\n\n',user,'\n\n')
-            res.render('store', {user: user, swag: swag});
+          res.render('store', {user: user, swag: swag});
           })
         })
       } else {

@@ -27,7 +27,7 @@ $('#add-user').on('click', function (event) {
 $('#update-user').on('click', function (event) {
   event.preventDefault();
 
-  const id = $(this).data('id');
+  const userId = $(this).data('userid');
 
   // capture All changes
   const changeUser = {
@@ -43,7 +43,7 @@ $('#update-user').on('click', function (event) {
   if (changeUser.password.length > 0 && changeUser.email.length > 0 && changeUser.password.length > 0 && changeUser.userName.length > 0 && changeUser.firstName.length > 0) {
     $.ajax({
       type: 'PUT',
-      url: `/api/user/${id}`,
+      url: `/api/user/${userId}`,
       data: changeUser
     }).then((result) => {
       console.log('Updated user:', result);
