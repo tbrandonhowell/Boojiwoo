@@ -22,6 +22,59 @@ app.use(express.static('public'));
 
 require('./config/passport')(db, app, passport); // pass passport for configuration
 
+<<<<<<< Updated upstream
+=======
+// var my_var = 6;
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'boojiwoo@gmail.com',
+    pass: 'project2team2'
+  }
+});
+
+// wrap in a route that grabs all the emails from the database
+const mailOptions = {
+  from: 'boojiwoo@gmail.com', // sender address
+  to: 'bhowell841@gmail.com', // list of receivers
+  subject: 'Hit your goals today.', // Subject line
+  html: `<div class="email-background" style="background: #eee;padding: 10px;text-align: center;">
+        <div class="pre-header" style="background: #eee;color: #666;font-size: 16px;">
+      <!-- Boojiwoo wants you to have a great, productive day. -->
+        </div>
+  <div class="email-container"
+      style="max-width: 500px;background: #00f078;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;">
+
+      <!-- <h1>BOOJIWOO</h1> -->
+      <img src="https://res.cloudinary.com/dgfcpmk3u/image/upload/v1554423580/boojiwoo-logo.png" style="max-width: 100%;">
+      <p style="margin: 20px;font-size: 18px;font-weight: 300;color: #666;line-height: 1.5;">Good Morning, the team at
+          Boojiwoo wants to remind you do your best and meet all you goals today.</p>
+
+      <div class="cta" style="text-align: center;margin: 15px;">
+          <a href="site"
+              style="text-decoration: none;display: inline-block;background: #00f078;color: #666;padding: 10px 20px;">Click
+              here to check in your progress</a>
+      </div>
+
+      <div class="footer-junk" style="background: none;padding: 5px;font-size: 12px;text-align: center;">
+          <a href=""
+              style="text-decoration: none;display: inline-block;background: #00f078;color: #666;padding: 10px 20px;">Unsubscribe</a>
+      </div>
+
+  </div>
+</div>`
+};
+
+schedule.scheduleJob('0 26 20 * * *', function () {
+  console.log('schedule is happening');
+  transporter.sendMail(mailOptions, function (err, info) {
+    console.log(err);
+    console.log(info);
+  });
+});
+
+>>>>>>> Stashed changes
 // Define our routes
 app.use(require('./routes/htmlRoutes')(db));
 app.use('/api', require('./routes/apiRoutes')(passport, db));
