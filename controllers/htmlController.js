@@ -92,7 +92,7 @@ module.exports = function () {
           db.SwagStore.findAll({
             attributes: [
               'swagId', 'swagType', 'description', 'fileName', 'pointCost',
-              [db.sequelize.literal('CASE WHEN NULLIF(swagOwneds.userId,\'\') IS NULL THEN false ELSE true END'), 'owned']
+              [db.sequelize.literal('CASE WHEN NULLIF(SwagOwned.userId,\'\') IS NULL THEN false ELSE true END'), 'owned']
             ],
             include: [{
               model: db.SwagOwned,
