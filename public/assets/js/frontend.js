@@ -118,7 +118,7 @@ $(".not-yet").on("click", function (event) {
         $("#pointsNeeded").text(difference);
             console.log("user can't purchase");
             // TODO: display a message that they need to earn X more points
-            $('#purchaseModal').modal().show();
+            $('#expenseModal').modal().show();
     });
 
 
