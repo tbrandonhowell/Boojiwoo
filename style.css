@@ -1,0 +1,64 @@
+.email-background{
+    background: #eee;
+    padding: 10px;
+    text-align: center
+}
+
+h1{
+    font-family: sans-serif;
+    color: #666
+}
+
+.email-container{
+    max-width: 500px;
+    /* background: #9191FF; */
+    background: #00f078;
+    /* background: pink; */
+    font-family: sans-serif;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 5px;
+    text-align: center
+}
+
+.pre-header{
+    /* @extend .email-container; */
+    background: #eee;
+    color: #666;
+    font-size: 16px
+}
+
+img{
+    max-width: 100%
+}
+
+p{
+    margin: 20px;
+    font-size: 18px;
+    font-weight: 300;
+    color: #666;
+    line-height: 1.5
+}
+
+.cta{
+    text-align: center;
+    margin: 15px;
+}
+
+a{
+    text-decoration: none;
+    display: inline-block;
+    /* background: #9191ff; */
+    background: #00f078;
+    /* background: pink; */
+    color: #666;
+    padding: 10px 20px
+}
+
+.footer-junk{
+    /* @extend .email-container */
+    background: none;
+    padding: 5px;
+    font-size: 12px;
+    text-align: center
+}
