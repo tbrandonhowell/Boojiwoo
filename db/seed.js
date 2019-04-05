@@ -22,7 +22,7 @@ module.exports = (db) => {
     email: 'j@j.co',
     password: process.env.USER_PWD,
     isAdmin: false,
-    avatarColor: '/assets/images/png/body-0.png',
+    avatarColor: '/assets/images/png/outfit-X.png',
     avatarEyes: '/assets/images/png/eyes-0.png',
     avatarMouth: '/assets/images/png/mouth-0.png',
     avatarHat: '/assets/images/png/outfit-0.png',
