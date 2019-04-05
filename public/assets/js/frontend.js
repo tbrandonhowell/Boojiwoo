@@ -1,3 +1,19 @@
+var allDone = function() {
+    console.log("allDone fired");
+    let buttonCheck = $('#buttonForm').html().trim();
+    console.log({buttonCheck});
+    if (buttonCheck === ""){
+        console.log("#buttonForm is empty");
+        $('#buttonForm').html(
+            `<img src="assets/images/png/thumbs-up.png" class="img-fluid">`
+        )
+        $('.speech-bubble').text(
+            "Great job completing your tasks today! Keep it up!"
+        )
+    }
+    
+}
+
 window.onload = function () {
   console.log('frontend.js is loaded');
 
@@ -20,20 +36,7 @@ window.onload = function () {
         }
     }
 
-    // homepage time of day
-    var hours = new Date().getHours();
-    if (hours > 17) {
-        // evening
-        $("#dayTime").text("evening");
-        console.log("It's evening");
-    } else if (hours > 12) {
-        // afternoon
-        $("#dayTime").text("afternoon");
-        console.log("It's afternoon");
-    } else {
-      // something;
-    }
-  }
+  
 
   // homepage time of day
   var hours = new Date().getHours();
@@ -91,11 +94,13 @@ window.onload = function () {
                 url: "api/completeTask/" + taskId,
                 type: "post"
             }).then( function() {
-                thisOne.hide();
+                // thisOne.hide();
+                thisOne.remove();
                 // trigger happy modal
                 $('.modal-body').text(randomAffirmation);
                 $('#taskModalLongTitle').text(taskConfirmedName);
                 $('#taskModal').modal().show();
+                allDone(); // update the message when all tasks have been completed
             })
             
         }
@@ -179,4 +184,5 @@ $(".not-yet").on("click", function (event) {
   let boojHeight = $('#buildOutfit').height();
   console.log({ boojHeight });
   $('#buildImage').attr('style', 'height: ' + boojHeight + 'px');
+
 };
