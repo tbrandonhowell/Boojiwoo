@@ -36,19 +36,19 @@ module.exports = function (sequelize, DataTypes) {
     },
     avatarColor: {
       type: DataTypes.STRING,
-      defaultValue: 0
+      defaultValue: '/assets/images/png/body-0.png'
     },
     avatarEyes: {
       type: DataTypes.STRING,
-      defaultValue: 0
+      defaultValue: '/assets/images/png/eyes-0.png'
     },
     avatarMouth: {
       type: DataTypes.STRING,
-      defaultValue: 0
+      defaultValue: '/assets/images/png/mouth-0.png'
     },
     avatarHat: {
       type: DataTypes.STRING,
-      defaultValue: 0
+      defaultValue: '/assets/images/png/outfit-0.png'
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
