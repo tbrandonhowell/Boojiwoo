@@ -1,0 +1,335 @@
+
+<html lang="en"><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
+	<script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+	<title>Boojiwoo</title>
+</head>
+
+<body class="bg-info">
+	<div class="container">
+  <div class="row mt-5">
+    <!-- spacing -->
+    <div class="col-md-1"></div>
+    <!--
+    Avatar display
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                  -->
+    <div class="col-md-5 text-center" id="boojiDiv">
+      <h1 class="text-white">Upgrade Your Boojiwoo:</h1>
+      <div id="buildImage" style="height: 624px">
+          <div id="buildOutfit">
+              <img src="/assets/images/png/outfit-0.png" class="img-fluid mb-3" id="new-outfit">
+          </div>
+          <div id="buildEyes">
+              <img src="/assets/images/png/eyes-0.png" class="img-fluid mb-3" id="new-eyes">
+          </div>
+          <div id="buildMouth">
+              <img src="/assets/images/png/mouth-0.png" class="img-fluid mb-3" id="new-mouth">
+          </div>
+          <div id="buildBody">
+              <img src="/assets/images/png/body-0.png" class="img-fluid mb-3" id="new-body">
+          </div>
+      </div> <!-- close #buildImage -->    </div>
+    <!--
+    Store display
+    ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    -->
+    <div class="col-md-5 text-center" id="buttonDiv">
+      <h4 class="text-white">You have 15 Woopoints. Complete tasks to earn points and unlock upgrades for your Boojiwoo!</h4>
+      <!--
+      Body carousel
+      ‾‾‾‾‾‾‾‾‾‾‾‾‾‾                                                              -->
+      <h3 class="text-white mt-4">Body color:</h3>
+      <div id="bodyCarousel" class="carousel slide" data-interval="false">
+        <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="/assets/images/png/body-0-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="1" data-swagtype="body" data-costpoints="1" data-userpoints="15" data-filename="/assets/images/png/body-0.png" data-description="">
+                  Use this body
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/body-1-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="2" data-swagtype="body" data-costpoints="10" data-userpoints="15" data-filename="/assets/images/png/body-1.png" data-description="">
+                  Use this body
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/body-2-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="3" data-swagtype="body" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/body-2.png" data-description="">
+                  Use this body
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/body-4-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="6" data-swagtype="body" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/body-4.png" data-description="">
+                  Use this body
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/body-3-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="7" data-swagtype="body" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/body-3.png" data-description="">
+                  Use this body
+                                  </button>
+              </div>
+        </div>
+        <a class="carousel-control-prev bodyClick" href="#bodyCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next bodyClick" href="#bodyCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <!--
+      Eye carousel
+      ‾‾‾‾‾‾‾‾‾‾‾‾‾                                                               -->
+      <h3 class="text-white mt-4">Eyes:</h3>
+      <div id="eyesCarousel" class="carousel slide" data-interval="false">
+        <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="/assets/images/png/eyes-1-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="4" data-swagtype="eyes" data-costpoints="10" data-userpoints="15" data-filename="/assets/images/png/eyes-1.png" data-description="">
+                  Use these eyes
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/eyes-0-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="5" data-swagtype="eyes" data-costpoints="1" data-userpoints="15" data-filename="/assets/images/png/eyes-0.png" data-description="">
+                  Use these eyes
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/eyes-2-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="8" data-swagtype="eyes" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/eyes-2.png" data-description="">
+                  Use these eyes
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/eyes-3-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="9" data-swagtype="eyes" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/eyes-3.png" data-description="">
+                  Use these eyes
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/eyes-4-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="10" data-swagtype="eyes" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/eyes-4.png" data-description="">
+                  Use these eyes
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/eyes-5-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="11" data-swagtype="eyes" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/eyes-5.png" data-description="">
+                  Use these eyes
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/eyes-6-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="12" data-swagtype="eyes" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/eyes-6.png" data-description="">
+                  Use these eyes
+                                  </button>
+              </div>
+        </div>
+        <a class="carousel-control-prev bodyClick" href="#eyesCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next bodyClick" href="#eyesCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <!--
+      Mouth carousel
+      ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                                                             -->
+      <h3 class="text-white mt-4">Mouth:</h3>
+      <div id="mouthCarousel" class="carousel slide" data-interval="false">
+        <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="/assets/images/png/mouth-0-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="13" data-swagtype="mouth" data-costpoints="1" data-userpoints="15" data-filename="/assets/images/png/mouth-0.png" data-description="">
+                  Use this mouth
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/mouth-1-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="14" data-swagtype="mouth" data-costpoints="10" data-userpoints="15" data-filename="/assets/images/png/mouth-1.png" data-description="">
+                  Use this mouth
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/mouth-2-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="15" data-swagtype="mouth" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/mouth-2.png" data-description="">
+                  Use this mouth
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/mouth-3-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="16" data-swagtype="mouth" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/mouth-3.png" data-description="">
+                  Use this mouth
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/mouth-4-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="17" data-swagtype="mouth" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/mouth-4.png" data-description="">
+                  Use this mouth
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/mouth-5-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="18" data-swagtype="mouth" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/mouth-5.png" data-description="">
+                  Use this mouth
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/mouth-6-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="19" data-swagtype="mouth" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/mouth-6.png" data-description="">
+                  Use this mouth
+                                  </button>
+              </div>
+        </div>
+        <a class="carousel-control-prev bodyClick" href="#mouthCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next bodyClick" href="#mouthCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      <!--
+      Outfit carousel
+      ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾                                                            -->
+      <h3 class="text-white mt-4">Outfit:</h3>
+      <div id="outfitCarousel" class="carousel slide" data-interval="false">
+        <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="/assets/images/png/outfit-0-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="20" data-swagtype="outfit" data-costpoints="1" data-userpoints="15" data-filename="/assets/images/png/outfit-0.png" data-description="">
+                  Use this outfit
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/outfit-1-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="21" data-swagtype="outfit" data-costpoints="10" data-userpoints="15" data-filename="/assets/images/png/outfit-1.png" data-description="">
+                  Use this outfit
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/outfit-2-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="22" data-swagtype="outfit" data-costpoints="20" data-userpoints="15" data-filename="/assets/images/png/outfit-2.png" data-description="">
+                  Use this outfit
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/outfit-3-icon.png" alt="First slide">
+                <button class="btn btn-success btn-block whiteborder mt-2 upgrade" data-swagid="23" data-swagtype="outfit" data-costpoints="30" data-userpoints="15" data-filename="/assets/images/png/outfit-3.png" data-description="">
+                  Use this outfit
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/outfit-4-icon.png" alt="First slide">
+                <button class="btn btn-dark btn-block whiteborder mt-2 not-yet" data-swagid="24" data-swagtype="outfit" data-costpoints="40" data-userpoints="15" data-filename="/assets/images/png/outfit-4.png" data-description="">
+                  40 Woopoints. Complete more tasks!
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/outfit-5-icon.png" alt="First slide">
+                <button class="btn btn-dark btn-block whiteborder mt-2 not-yet" data-swagid="25" data-swagtype="outfit" data-costpoints="50" data-userpoints="15" data-filename="/assets/images/png/outfit-5.png" data-description="">
+                  50 Woopoints. Complete more tasks!
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/outfit-6-icon.png" alt="First slide">
+                <button class="btn btn-dark btn-block whiteborder mt-2 not-yet" data-swagid="26" data-swagtype="outfit" data-costpoints="60" data-userpoints="15" data-filename="/assets/images/png/outfit-6.png" data-description="">
+                  60 Woopoints. Complete more tasks!
+                                  </button>
+              </div>
+              <div class="carousel-item ">
+                <img class="d-block w-100" src="/assets/images/png/outfit-7-icon.png" alt="First slide">
+                <button class="btn btn-dark btn-block whiteborder mt-2 not-yet" data-swagid="27" data-swagtype="outfit" data-costpoints="100" data-userpoints="15" data-filename="/assets/images/png/outfit-7.png" data-description="">
+                  100 Woopoints. Complete more tasks!
+                                  </button>
+              </div>
+
+        </div>
+        <a class="carousel-control-prev bodyClick" href="#outfitCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next bodyClick" href="#outfitCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </div>
+    <!-- spacing -->
+    <div class="col-md-1"></div>
+  </div>
+
+
+  <!--
+  Footer
+  ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾          -->
+  <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 text-center">
+          <hr class="border-white">
+          <p class="text-white text-center">
+              <a href="/" class="text-white underlink">Home</a> &nbsp;&nbsp;
+              <a href="/upgrade" class="text-white underlink">Store</a> &nbsp;&nbsp;
+              <a href="/profile" class="text-white underlink">My Account</a> &nbsp;&nbsp;
+              <a href="/logout" class="text-white underlink">Logout</a>
+          </p>
+      </div>
+      <div class="col-md-1"></div>
+  </div></div> <!-- close container -->
+
+
+<div id="window-size-helper-dev-liudas-eu" class="window-size-helper-dev-liudas-eu-hide">1269px × 461px</div><div id="tqShowIP" class="tqShowIP_left">::1</div></body></html>
+
+<script>
+console.log("did this fire?");
+$(".update").on("click", function (event) {
+        event.preventDefault();
+        console.log("Update click captured");
+        const swagType = $(this).data('swagtype'); // this needed for API route build-out
+        console.log({swagType});
+        const fileName = $(this).data('filename'); // this needed to update DOM avatar
+        console.log({fileName});
+        // const userId = $(this).data('userId'); // this might go away
+        // const swagId = $(this).data('swagId'); // needed to update DB values
+        $.ajax({
+            url: "api/updateAvatar/" + swagType,
+            type: "post",
+            data: {
+                filePath: fileName
+            }
+        }).then( function() {
+            console.log("success for DB push");
+            // mouth eyes outfit body << swagIDs
+            // new-eyes, etc outfit eyes mouth body
+            if (swagType === "mouth") {
+                $("#new-mouth").attr("src",fileName);
+            } else if (swagType === "eyes") {
+                $("#new-eyes").attr("src",fileName);
+            } else if (swagType === "outfit") {
+                $("#new-outfit").attr("src",fileName);
+            } else if (swagType === "c") { // is it a color(body)?
+                $("#new-body").attr("src",fileName);
+            }
+        });
+    })
+
+</script>
