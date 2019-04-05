@@ -76,7 +76,7 @@ module.exports = function () {
     store: (req,res) => {
       if (req.isAuthenticated()) {
           const user = {
-          user: req.session.passport.user,
+          user: req.user,
           isloggedin: req.isAuthenticated()
         };
         // get swag & return w/ owned(t/f) field
@@ -89,7 +89,7 @@ module.exports = function () {
             model: db.SwagOwned,
             required: false,
             where: {
-              userId: req.session.passport.user.userId
+              userId: user.user.userId
             }
           }]
         }).then((swagStore)=>{
@@ -156,11 +156,23 @@ module.exports = function () {
             }
             swag.push(item)
           }
-          res.render('store', {user: user, swag: swag});
+          console.log('\n\n',user)
+          db.User.findOne({
+            where: {
+              userId: user.user.userId
+            }
+          }).then((user)=>{
+            user = {
+              user: user
+            }
+            console.log('\n\n',user,'\n\n')
+            res.render('store', {user: user, swag: swag});
+          })
         })
       } else {
         res.render('login');
       }
     }
+
   };
 };
