@@ -130,7 +130,7 @@ module.exports = function () {
       userId = req.session.passport.user.userId;
       cmd = req.params.cmd
       cmd = cmd[0].toLowerCase()
-      if (cmd === 'c') {        // color call
+      if (cmd === 'b') {        // body call
         db.User.update({
           avatarColor: req.body.filePath // BH tweak
         }, {
@@ -163,7 +163,7 @@ module.exports = function () {
           req.session.passport.user.avatarMouth = req.body.filePath; // BH addition
           res.status(200).json(confirm);
         });
-      } else if (cmd === 'h') { // hat/outfit call
+      } else if (cmd === 'o') { // outfit call
         db.User.update({
           avatarHat: req.body.filePath // BH tweak
         }, {

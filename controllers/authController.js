@@ -13,8 +13,75 @@ module.exports = (passport, db) => {
           userName: req.body.userName
         };
 
-        return db.User.create(newUser).then(() => {
-          res.status(200).json({ message: 'Registered successfully.' });
+        return db.User.create(newUser).then((user) => {
+          const userId = user.dataValues.userId
+          const defaultTasks = [
+            'Wash your face',
+            'Brush your teeth',
+            'Finish your homework',
+            'Lay out your clothes for tomorrow',
+            'Play outside',
+            'Set your alarm for tomorrow morning',
+            'Say something nice to your friends'
+          ]
+          const defaultTransactions = [1,6,13,20]
+          db.Tasks.create({
+            userId: userId,
+            description: defaultTasks[0]
+          }).then(()=>{
+            db.Tasks.create({
+              userId: userId,
+              description: defaultTasks[1]
+            }).then(()=>{
+              db.Tasks.create({
+                userId: userId,
+                description: defaultTasks[2]
+              }).then(()=>{
+                db.Tasks.create({
+                  userId: userId,
+                  description: defaultTasks[3]
+                }).then(()=>{
+                  db.Tasks.create({
+                    userId: userId,
+                    description: defaultTasks[4]
+                  }).then(()=>{
+                    db.Tasks.create({
+                      userId: userId,
+                      description: defaultTasks[5]
+                    }).then(()=>{
+                      db.Tasks.create({
+                        userId: userId,
+                        description: defaultTasks[6]
+                      }).then(()=>{
+                        // start transactions
+                        db.SwagOwned.create({
+                          swagId: defaultTransactions[0],
+                          userId: userId
+                        }).then(()=>{
+                          db.SwagOwned.create({
+                            swagId: defaultTransactions[1],
+                            userId: userId
+                          }).then(()=>{
+                            db.SwagOwned.create({
+                              swagId: defaultTransactions[2],
+                              userId: userId
+                            }).then(()=>{
+                              db.SwagOwned.create({
+                                swagId: defaultTransactions[3],
+                                userId: userId
+                              }).then(()=>{
+                                res.status(200).json({ message: 'Registered successfully.' });
+                              })
+                            })
+                          })
+                        })
+                      })
+                    })
+                  })
+                })
+              })
+            })
+          })
         });
       }).catch((err) => {
         console.log(err);
