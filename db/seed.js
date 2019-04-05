@@ -204,7 +204,7 @@ module.exports = (db) => {
     fileName: '/assets/images/png/outfit-7.png',
     pointCost: 100
   });
-  
+
 
 
   /*
