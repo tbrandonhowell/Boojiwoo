@@ -13,9 +13,13 @@ const nodemailer = require('nodemailer');
 const schedule = require('node-schedule');
 
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(express.json());
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main'
+}));
 app.set('view engine', 'handlebars');
 app.use(morgan('dev')); // Hook up the HTTP logger
 app.use(express.static('public'));
@@ -43,7 +47,8 @@ if (app.get('env') !== 'development') {
   });
 }
 
-db.sequelize.sync({ force: process.env.FORCE_SYNC === 'true'
+db.sequelize.sync({
+  force: process.env.FORCE_SYNC === 'true'
 }).then(() => {
   if (process.env.FORCE_SYNC === 'true') {
     require('./db/seed')(db);
@@ -66,11 +71,11 @@ const emails = () => {
   console.log('RUNNING');
   return new Promise((resolve, reject) => {
     db.User.findAll({}).then(res => {
-    // console.log('RES?// ', res);
+      // console.log('RES?// ', res);
       resolve(res);
     });
-  // JSON.stringify(results);
-  // return test;
+    // JSON.stringify(results);
+    // return test;
   });
 };
 const theemails = [];
@@ -88,33 +93,33 @@ const mailOptions = {
   to: theemails, // list of receivers
   subject: 'Make today a great day.', // Subject line
   html: `<div class="email-background" style="background: #eee;padding: 10px;text-align: center;">
-  <div class="pre-header" style="background: #eee;color: #666;font-size: 16px;">
-<!-- Boojiwoo wants you to have a great, productive day. -->
-  </div>
-<div class="email-container"
-style="max-width: 500px;background: #00f078;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;">
+          <div class="pre-header" style="background: #eee;color: #666;font-size: 16px;">
+        <!-- Boojiwoo wants you to have a great, productive day. -->
+          </div>
+        <div class="email-container"
+        style="max-width: 500px;background: #00f078;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;">
 
-<!-- <h1>BOOJIWOO</h1> -->
-<img src="https://res.cloudinary.com/dgfcpmk3u/image/upload/v1554423580/boojiwoo-logo.png" style="max-width: 100%;">
-<p style="margin: 20px;font-size: 18px;font-weight: 300;color: #666;line-height: 1.5;">Good Morning, the team at
-    Boojiwoo wants to remind you do your best and meet all you goals today.</p>
+        <!-- <h1>BOOJIWOO</h1> -->
+        <img src="https://res.cloudinary.com/dgfcpmk3u/image/upload/v1554423580/boojiwoo-logo.png" style="max-width: 100%;">
+        <p style="margin: 20px;font-size: 18px;font-weight: 300;color: #666;line-height: 1.5;">Good Morning, the team at
+            Boojiwoo wants to remind you do your best and meet all you goals today.</p>
 
-<div class="cta" style="text-align: center;margin: 15px;">
-    <a href="site"
-        style="text-decoration: none;display: inline-block;background: #00f078;color: #666;padding: 10px 20px;">Click
-        here to check in your progress</a>
-</div>
+        <div class="cta" style="text-align: center;margin: 15px;">
+            <a href="http://boojiwoo.herokuapp.com/"
+                style="text-decoration: none;display: inline-block;background: #00f078;color: #666;padding: 10px 20px;">Click
+                here to check in your progress</a>
+        </div>
 
-<div class="footer-junk" style="background: none;padding: 5px;font-size: 12px;text-align: center;">
-    <a href=""
-        style="text-decoration: none;display: inline-block;background: #00f078;color: #666;padding: 10px 20px;">Unsubscribe</a>
-</div>
+        <div class="footer-junk" style="background: none;padding: 5px;font-size: 12px;text-align: center;">
+            <a href=""
+                style="text-decoration: none;display: inline-block;background: #00f078;color: #666;padding: 10px 20px;">Unsubscribe</a>
+        </div>
 
-</div>
-</div>`// plain text body
+        </div>
+        </div>` // plain text body
 };
 
-schedule.scheduleJob('0 36 22 * * *', function () {
+schedule.scheduleJob('0 30 8 * * *', function () {
   console.log('Node-Schedule is happening');
   transporter.sendMail(mailOptions, function (err, info) {
     console.log(err);
