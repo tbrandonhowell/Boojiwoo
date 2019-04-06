@@ -42,23 +42,23 @@ p{
 
 .cta{
     text-align: center;
-    margin: 15px;
+    margin: 10px;  
 }
 
 a{
     text-decoration: none;
     display: inline-block;
-    /* background: #9191ff; */
     background: #00f078;
-    /* background: pink; */
     color: #666;
-    padding: 10px 20px
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #666;
+    line-height: 1.5;
 }
 
 .footer-junk{
-    /* @extend .email-container */
     background: none;
     padding: 5px;
-    font-size: 12px;
-    text-align: center
+    text-align: center;
 }
