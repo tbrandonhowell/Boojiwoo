@@ -22,9 +22,11 @@ After the user completes all tasks for the day they are given the "Thumbs Up."
 <img width="822" alt="Screen Shot 2019-04-10 at 6 53 45 PM" src="https://user-images.githubusercontent.com/17474969/55919035-6b178f80-5bc2-11e9-8c8a-1cea9e579d27.png">
 
 Examples of mouths that can be purchased.
+<br />
 <img width="393" alt="Screen Shot 2019-04-10 at 6 54 18 PM" src="https://user-images.githubusercontent.com/17474969/55919036-6b178f80-5bc2-11e9-8b1f-8a2db50fb7f9.png">
 <img width="385" alt="Screen Shot 2019-04-10 at 6 54 28 PM" src="https://user-images.githubusercontent.com/17474969/55919038-6b178f80-5bc2-11e9-81a6-06900b283257.png">
 
 Examples of outfits that can be purchased.
+<br />
 <img width="435" alt="Screen Shot 2019-04-10 at 6 54 42 PM" src="https://user-images.githubusercontent.com/17474969/55919039-6b178f80-5bc2-11e9-84f8-12fb44ec0dbc.png">
 <img width="393" alt="Screen Shot 2019-04-10 at 6 55 03 PM" src="https://user-images.githubusercontent.com/17474969/55919040-6ce15300-5bc2-11e9-9c15-49c683185d4f.png">
