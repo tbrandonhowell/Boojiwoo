@@ -7,10 +7,12 @@ A simple starter project with Express, Handlebars, Sequelize, Passport and Local
 ## Technologies Used: 
 <ul>
   <li>Node.js</li>
-<li>HTML</li>
-<li>CSS</li>
-<li>MySQL</li>
-<li>NPM (Express, Sequelize, Handlebars, Nodemailer, Schedule, Mocha, Chai, EsLint, Passport)</li>
+  <li>Javascript</li>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>Bootstrap</li>
+  <li>MySQL</li>
+  <li>NPM (Express, Sequelize, Handlebars, Nodemailer, Schedule, Mocha, Chai, EsLint, Passport)</li>
 </ul>
 
 ## About
